@@ -18,6 +18,7 @@ module.exports = {
       },
       email: {
         type: Sequelize.TEXT,
+        unique: true,
         allowNull: false,
       },
       createdAt: {

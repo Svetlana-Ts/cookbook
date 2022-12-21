@@ -11,7 +11,6 @@ module.exports = {
           key: 'id',
         },
       },
-
       cardId: {
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -20,6 +19,14 @@ module.exports = {
           model: 'Cards',
           key: 'id',
         },
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
       },
     });
   },
