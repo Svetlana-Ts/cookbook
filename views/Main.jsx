@@ -7,7 +7,7 @@ module.exports = function Main({ isAuth, cards, userLogin = '' }) {
   return (
     <Layout>
       <header>
-        <div>LOGO</div>
+        <a href="/">LOGO</a>
         <div>NAME</div>
         <div>MENU</div>
         <Menu isAuth={isAuth} userLogin={userLogin} />
