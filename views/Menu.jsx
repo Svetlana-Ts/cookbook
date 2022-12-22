@@ -1,9 +1,10 @@
 const React = require('react');
 
-module.exports = function Menu({ isAuth }) {
+module.exports = function Menu({ isAuth, userLogin }) {
   if (isAuth) {
     return (
       <ul>
+        {userLogin && <p>{userLogin}</p>}
         <li>
           <a href="/favourites">Избранное</a>
         </li>

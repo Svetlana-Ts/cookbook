@@ -3,14 +3,14 @@ const CardList = require('./CardList');
 const Layout = require('./Layout');
 const Menu = require('./Menu');
 
-module.exports = function Main({ isAuth, cards }) {
+module.exports = function Main({ isAuth, cards, userLogin = '' }) {
   return (
     <Layout>
       <header>
         <div>LOGO</div>
         <div>NAME</div>
         <div>MENU</div>
-        <Menu isAuth={isAuth} />
+        <Menu isAuth={isAuth} userLogin={userLogin} />
       </header>
       <h1>MAIN PAGE</h1>
       <CardList isAuth={isAuth} cards={cards} />
