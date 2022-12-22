@@ -13,8 +13,12 @@ cardsRouter.get('/', async (req, res) => {
   res.renderComponent(Main, { isAuth, cards });
 });
 
-cardsRouter.get('/:id', (req, res) => {
-  res.renderComponent(Recipe);
+cardsRouter.get('/:id', async (req, res) => {
+  const cardId = req.params.id;
+  const card = await CardModel.findOne({
+    where: { id: cardId },
+  });
+  res.renderComponent(Recipe, { card });
 });
 
 module.exports = cardsRouter;
