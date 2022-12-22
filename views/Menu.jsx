@@ -21,6 +21,10 @@ module.exports = function Menu({ isAuth }) {
       <li>
         <a href="/auth/register">Регистрация</a>
       </li>
+      {/* проверка */}
+      <li>
+        <a href="/recipe">Карточка Рецепта</a>
+      </li>
     </ul>
   );
 };
