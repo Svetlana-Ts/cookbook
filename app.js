@@ -9,6 +9,7 @@ const session = require('express-session');
 const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const cardsRouter = require('./routes/cardsRouter');
+const favouritesRouter = require('./routes/favouritesRouter');
 const FileStore = require('session-file-store')(session);
 
 const app = express();
@@ -36,6 +37,7 @@ app.use(session(sessionConfig));
 app.use('/', indexRouter);
 app.use('/cards', cardsRouter);
 app.use('/auth', authRouter);
+app.use('/favourites', favouritesRouter);
 
 app
   .listen(PORT)
