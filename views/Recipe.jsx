@@ -20,6 +20,7 @@ function Recipe() {
         <div className="recipe-text">Instructions</div>
         <p className="recipe-text-instr">How cook it?!</p>
       </div>
+      <a href="/">Go back to Main Page</a>
     </Layout>
   );
 }

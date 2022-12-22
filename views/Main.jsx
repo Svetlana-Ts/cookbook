@@ -1,8 +1,11 @@
 const React = require('react');
+const CardList = require('./CardList');
 const Layout = require('./Layout');
 const Menu = require('./Menu');
 
-module.exports = function Main({ isAuth }) {
+module.exports = function Main({ isAuth, cards }) {
+  // console.log(cards);
+
   return (
     <Layout>
       <header>
@@ -11,7 +14,8 @@ module.exports = function Main({ isAuth }) {
         <div>MENU</div>
         <Menu isAuth={isAuth} />
       </header>
-      <h1>MAIN</h1>
+      <h1>MAIN PAGE</h1>
+      <CardList cards={cards} />
     </Layout>
   );
 };
