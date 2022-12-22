@@ -4,8 +4,6 @@ const Layout = require('./Layout');
 const Menu = require('./Menu');
 
 module.exports = function Main({ isAuth, cards }) {
-  // console.log(cards);
-
   return (
     <Layout>
       <header>
