@@ -13,7 +13,7 @@ module.exports = function Main({ isAuth, cards }) {
         <Menu isAuth={isAuth} />
       </header>
       <h1>MAIN PAGE</h1>
-      <CardList cards={cards} />
+      <CardList isAuth={isAuth} cards={cards} />
     </Layout>
   );
 };

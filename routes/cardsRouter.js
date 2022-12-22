@@ -11,9 +11,11 @@ cardsRouter.get('/', async (req, res) => {
     if (req.session.userId) {
       isAuth = true;
       res.renderComponent(Main, { isAuth, cards });
+    } else {
+      res.renderComponent(Main, { isAuth, cards });
     }
-    res.renderComponent(Main, { isAuth, cards });
   } catch (error) {
+    console.error(error);
     res.status(500);
     res.renderComponent(Error, { error });
   }
@@ -21,11 +23,21 @@ cardsRouter.get('/', async (req, res) => {
 });
 
 cardsRouter.get('/:id', async (req, res) => {
-  const cardId = req.params.id;
-  const card = await CardModel.findOne({
-    where: { id: cardId },
-  });
-  res.renderComponent(Recipe, { card });
+  try {
+    let isAuth = false;
+    if (req.session.userId) {
+      isAuth = true;
+    }
+    const cardId = req.params.id;
+    const card = await CardModel.findOne({
+      where: { id: cardId },
+    });
+    res.renderComponent(Recipe, { isAuth, card });
+  } catch (error) {
+    res.status(500);
+    res.renderComponent(Error, { error });
+  }
+  res.end();
 });
 
 module.exports = cardsRouter;
