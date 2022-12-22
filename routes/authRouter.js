@@ -67,15 +67,19 @@ authRouter.post('/register', async (req, res) => {
     return;
   }
 
+  let user;
+
   try {
-    await User.create({
+    user = await User.create({
       login: req.body.login,
       email: req.body.email,
       password: hashedPassword,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    res.redirect('/auth/login');
+    req.session.userId = user.id;
+
+    res.redirect('/');
   } catch (error) {
     res.status(500).json('Не удалось зарегистрироваться.');
   }

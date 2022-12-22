@@ -5,7 +5,7 @@ module.exports = function Login() {
   return (
     <Layout>
       <h1>Регистрация</h1>
-      <form action="/auth/register">
+      <form method="post" action="/auth/register">
         <label htmlFor="emailInput">Почта</label>
         <input type="email" id="emailInput" name="email" />
 
@@ -15,7 +15,7 @@ module.exports = function Login() {
         <label htmlFor="passwordInput">Пароль</label>
         <input type="password" id="passwordInput" name="password" />
 
-        <button>Зарегистрироваться</button>
+        <button type="submit">Зарегистрироваться</button>
       </form>
     </Layout>
   );
