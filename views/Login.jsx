@@ -12,7 +12,7 @@ module.exports = function Login() {
         <label htmlFor="passwordInput">Пароль</label>
         <input type="password" id="passwordInput" name="password" />
 
-        <button>Войти</button>
+        <button type="submit">Войти</button>
       </form>
     </Layout>
   );
