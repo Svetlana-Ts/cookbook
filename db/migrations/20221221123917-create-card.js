@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      ingredientsCount: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       time: {
         type: Sequelize.TEXT,
         allowNull: false,
