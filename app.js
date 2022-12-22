@@ -9,7 +9,6 @@ const session = require('express-session');
 const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const cardsRouter = require('./routes/cardsRouter');
-const recipeRouter = require('./routes/recipeRouter');
 const FileStore = require('session-file-store')(session);
 
 const app = express();
@@ -37,7 +36,6 @@ app.use(session(sessionConfig));
 app.use('/', indexRouter);
 app.use('/cards', cardsRouter);
 app.use('/auth', authRouter);
-app.use('/recipe', recipeRouter);
 
 app
   .listen(PORT)
@@ -45,5 +43,5 @@ app
     console.log('Ошибка при подключении сервера: ', error.message);
   })
   .on('listening', () => {
-    console.log(`Серевер успешно подключен к порту ${PORT}`);
+    console.log(`Сервер успешно подключен к порту ${PORT}`);
   });
