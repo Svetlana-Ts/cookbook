@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const authRouter = require('express').Router();
 const Login = require('../views/Login');
 const Registration = require('../views/Registration');
+const Error = require('../views/Error');
 const { User } = require('../db/models');
 
 authRouter.get('/login', (req, res) => {
@@ -13,8 +14,9 @@ authRouter.post('/login', async (req, res) => {
   const isPassword = Boolean(req.body.password);
 
   if (!isEmail || !isPassword) {
-    res.status(400).json('Введите логин или пароль!');
-    return;
+    res.status(400).renderComponent(Error, {
+      error: { message: 'Введите логин или пароль!' },
+    });
   }
 
   let user;
@@ -22,13 +24,13 @@ authRouter.post('/login', async (req, res) => {
   try {
     user = await User.findOne({ where: { email: req.body.email } });
   } catch (error) {
-    res.status(500).json({ error: error.message });
-    return;
+    res.status(500).renderComponent(Error, { error });
   }
 
   if (!user) {
-    res.status(400).json('Неверный логин или пароль!');
-    return;
+    res.status(400).renderComponent(Error, {
+      error: { message: 'Неверный логин или пароль!' },
+    });
   }
 
   const rawPassword = req.body.password;
@@ -38,13 +40,15 @@ authRouter.post('/login', async (req, res) => {
   try {
     isSame = await bcrypt.compare(rawPassword, hashedPassword);
   } catch (error) {
-    res.status(500).json({ error: error.message });
-    return;
+    res.status(500).renderComponent(Error, {
+      error,
+    });
   }
 
   if (!isSame) {
-    res.status(400).json('Неверный логин или пароль!');
-    return;
+    res.status(400).renderComponent(Error, {
+      error: { message: 'Неверный логин или пароль!' },
+    });
   }
 
   req.session.userId = user.id;

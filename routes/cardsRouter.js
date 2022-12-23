@@ -5,18 +5,32 @@ const Error = require('../views/Error');
 const CardList = require('../views/CardList');
 
 cardsRouter.get('/', async (req, res) => {
+  const { baseUrl } = req;
   try {
     const user = await User.findByPk(req.session.userId);
     let userLogin = '';
     if (user) {
       userLogin = user.login;
     }
-    const cards = await CardModel.findAll();
+
+    const colName = req.query.order;
+    const sortBy = req.query.sort;
+    let cards;
+
+    if (req.query.order) {
+      cards = await CardModel.findAll({
+        order: [[colName, sortBy]],
+      });
+    } else {
+      cards = await CardModel.findAll();
+    }
+
     let isAuth = false;
     if (req.session.userId) {
       isAuth = true;
     }
-    res.renderComponent(CardList, { isAuth, cards, userLogin });
+
+    res.renderComponent(CardList, { isAuth, cards, userLogin, baseUrl });
   } catch (error) {
     console.error(error);
     res.status(500);
@@ -42,28 +56,5 @@ cardsRouter.get('/:id', async (req, res) => {
   }
   res.end();
 });
-
-// cardsRouter.get('/?order=time&sort=desc', async (req, res) => {
-//   // res.join({ data: 'AAAAAAAAAAAAAAAAAAA' });
-//   // res.renderComponent(Error);
-//   // res.end();
-//   try {
-//     // const user = await User.findByPk(req.session.userId);
-//     // let userLogin = '';
-//     // if (user) {
-//     //   userLogin = user.login;
-//     // }
-
-//     // сортировка по убыванию
-//     const cards = await CardModel.findAll({ order: [['time', 'DESC']] });
-//     res.join({ cards });
-//     // res.renderComponent(Main, { isAuth: true, cards, userLogin });
-//   } catch (error) {
-//     res.status(500);
-//     res.renderComponent(Error, { error });
-//   }
-// });
-
-// cardsRouter.get('/?order=ingredients&sort=desc', (req, res) => {});
 
 module.exports = cardsRouter;
