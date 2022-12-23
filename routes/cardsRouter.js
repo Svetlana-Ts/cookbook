@@ -43,4 +43,27 @@ cardsRouter.get('/:id', async (req, res) => {
   res.end();
 });
 
+cardsRouter.get('/?order=time&sort=desc', async (req, res) => {
+  // res.join({ data: 'AAAAAAAAAAAAAAAAAAA' });
+  // res.renderComponent(Error);
+  // res.end();
+  try {
+    const user = await User.findByPk(req.session.userId);
+    let userLogin = '';
+    if (user) {
+      userLogin = user.login;
+    }
+
+    // сортировка по убыванию
+    const cards = await CardModel.findAll({ order: [['time', 'DESC']] });
+    res.join({ cards });
+    // res.renderComponent(Main, { isAuth: true, cards, userLogin });
+  } catch (error) {
+    res.status(500);
+    res.renderComponent(Error, { error });
+  }
+});
+
+// cardsRouter.get('/?order=ingredients&sort=desc', (req, res) => {});
+
 module.exports = cardsRouter;

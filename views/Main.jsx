@@ -13,6 +13,11 @@ module.exports = function Main({ isAuth, cards, userLogin = '' }) {
         <Menu isAuth={isAuth} userLogin={userLogin} />
       </header>
       <h1>MAIN PAGE</h1>
+      <div>
+        <p>Сортировать по:</p>
+        <a href="/cards/?order=time&sort=desc">времени приготовления</a>
+        <a href="/cards/?order=ingredients&sort=desc">ингредиентам</a>
+      </div>
       <CardList isAuth={isAuth} cards={cards} />
     </Layout>
   );

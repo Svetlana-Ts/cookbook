@@ -3,14 +3,14 @@ require('@babel/register');
 
 const express = require('express');
 const logger = require('morgan');
-const ssr = require('./middleware/ssr');
-const path = require('path');
 const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const path = require('path');
+const ssr = require('./middleware/ssr');
 const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const cardsRouter = require('./routes/cardsRouter');
 const favouritesRouter = require('./routes/favouritesRouter');
-const FileStore = require('session-file-store')(session);
 
 const app = express();
 const PORT = process.env.PORT || 3000;

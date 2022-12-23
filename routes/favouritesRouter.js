@@ -2,7 +2,6 @@ const favouritesRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
 const Main = require('../views/Main');
 const Error = require('../views/Error');
-const { where } = require('sequelize');
 
 favouritesRouter.get('/', async (req, res) => {
   try {
