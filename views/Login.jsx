@@ -1,9 +1,9 @@
 const React = require('react');
-const Layout = require('./Layout');
+const Main = require('./Main');
 
 module.exports = function Login() {
   return (
-    <Layout>
+    <Main>
       <h1>Вход</h1>
       <form method="post" action="/auth/login">
         <label htmlFor="emailInput">Почта</label>
@@ -14,6 +14,6 @@ module.exports = function Login() {
 
         <button type="submit">Войти</button>
       </form>
-    </Layout>
+    </Main>
   );
 };

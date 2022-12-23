@@ -1,18 +1,24 @@
 const favouritesRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
-const Main = require('../views/Main');
 const Error = require('../views/Error');
+const CardList = require('../views/CardList');
 
 favouritesRouter.get('/', async (req, res) => {
   try {
     let isAuth = false;
     if (req.session.userId) {
       isAuth = true;
+      const user = await User.findByPk(req.session.userId);
+      const userLogin = user.login;
       const cards = await User.findAll({
         include: User.Cards,
         where: { id: req.session.userId },
       });
-      res.renderComponent(Main, { isAuth, cards: cards[0].cards });
+      res.renderComponent(CardList, {
+        isAuth,
+        cards: cards[0].cards,
+        userLogin,
+      });
     }
   } catch (error) {
     res.renderComponent(Error, { error });
