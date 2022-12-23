@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false,
       },
       time: {
-        type: Sequelize.TEXT,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       createdAt: {
