@@ -5,6 +5,7 @@ const Error = require('../views/Error');
 const CardList = require('../views/CardList');
 
 cardsRouter.get('/', async (req, res) => {
+  const { baseUrl } = req;
   try {
     const user = await User.findByPk(req.session.userId);
     let userLogin = '';
@@ -29,7 +30,7 @@ cardsRouter.get('/', async (req, res) => {
       isAuth = true;
     }
 
-    res.renderComponent(CardList, { isAuth, cards, userLogin });
+    res.renderComponent(CardList, { isAuth, cards, userLogin, baseUrl });
   } catch (error) {
     console.error(error);
     res.status(500);
