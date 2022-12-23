@@ -1,19 +1,23 @@
 const React = require('react');
-const CardList = require('./CardList');
 const Layout = require('./Layout');
 const Menu = require('./Menu');
 
-module.exports = function Main({ isAuth, cards, userLogin = '' }) {
+module.exports = function Main({ isAuth, userLogin = '', children }) {
   return (
     <Layout>
       <header>
-        <div>LOGO</div>
-        <div>NAME</div>
-        <div>MENU</div>
-        <Menu isAuth={isAuth} userLogin={userLogin} />
+        <nav>
+          <li>
+            <a href="/">LOGO</a>
+          </li>
+          <li>NAME</li>
+          <li>
+            MENU
+            <Menu isAuth={isAuth} userLogin={userLogin} />
+          </li>
+        </nav>
       </header>
-      <h1>MAIN PAGE</h1>
-      <CardList isAuth={isAuth} cards={cards} />
+      {children}
     </Layout>
   );
 };
