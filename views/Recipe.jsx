@@ -6,7 +6,7 @@ function Recipe({ isAuth, card }) {
     <Layout>
       <div className="recipe">
         <div className="recipe-photo">
-          <img src={card.photo} className="recipe-photo-img" alt="" />
+          <img height="400" width="400" src={card.photo} className="recipe-photo-img" alt="" />
           {isAuth && (
             <a href={`/favourites/${card.id}`} className="card-btn-like">
               Like
@@ -22,8 +22,10 @@ function Recipe({ isAuth, card }) {
             ))}
           </ul>
         </div>
+        <h2>Instruction</h2>
         <div className="recipe-text">{card.instruction}</div>
       </div>
+      <p />
       <a href="/">Go back to Main Page</a>
     </Layout>
   );

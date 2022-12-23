@@ -10,22 +10,21 @@ function Card({ isAuth, card }) {
           </a>
         )}
         <img
-          width="100px"
-          height="100px"
+          width="250px"
+          height="250px"
           src={card.photo}
           className="card-photo-img"
           alt=""
         />
       </div>
       <div className="card-body">
-        <a className="card-body-name" href={`/cards/${card.id}`}>
-          {card.title}
-        </a>
-        <div className="card-body-cook-time">{card.time}</div>
-        <div className="card-body-ingr-count">
-          {card.ingredients.split('|').length}
-        </div>
+        <p />
+        <b>{card.title}</b>
+        <div className="card-body-cook-time">{`Cooking time: ${card.time} minutes`}</div>
+        <div className="card-body-ingr-count">{`Ingredients count: ${card.ingredients.split('|').length} products`}</div>
+        <a className="card-body-name" href={`/cards/${card.id}`}>View the recipe</a>
       </div>
+      <p />
     </li>
   );
 }
