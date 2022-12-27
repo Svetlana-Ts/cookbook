@@ -1,27 +1,20 @@
 const React = require('react');
+const Layout = require('./Layout');
 
 module.exports = function Menu({ isAuth, userLogin }) {
   if (isAuth) {
     return (
-      <ul>
+      <div id="dropdown" className="dropdown-menu">
         {userLogin && <p>{userLogin}</p>}
-        <li>
-          <a href="/favourites">Избранное</a>
-        </li>
-        <li>
-          <a href="/auth/logout">Выход</a>
-        </li>
-      </ul>
+          <a href="/favourites" className="dropdown-link">Favoutites</a>
+          <a href="/auth/logout" className="dropdown-link">Log out</a>
+     </div>   
     );
   }
   return (
-    <ul>
-      <li>
-        <a href="/auth/login">Вход</a>
-      </li>
-      <li>
-        <a href="/auth/register">Регистрация</a>
-      </li>
-    </ul>
+    <div id="dropdown" className="dropdown-menu">
+        <a href="/auth/login" className="dropdown-link">Log in</a>
+        <a href="/auth/register" className="dropdown-link">Sign in</a>  
+    </div>
   );
 };

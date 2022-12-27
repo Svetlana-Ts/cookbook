@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Secular+One&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container {
+    margin: 0px 166px;
+}
+
+.header {
+    background: url(../img/для_навигации.jpg) no-repeat center center fixed;
+    height: 100vh;
+    background-size: cover;
+}
+
+.header-line {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0, .2);
+    border-radius: 7px;
+    width: 150px;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    top: 100%;
+    transition: all .08s ease-out;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 0;
+    color: black;
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.dropdown-menu a:hover {
+    opacity: 1;
+}
+
+.dropdown-menu.show {
+    z-index: 99;
+    visibility: visible;
+    opacity: 1;
+    top: calc(100% + 8px);
+}
+
+.dropdown button {
+    height: 48px;
+    width: 100px;
+    background-color: white;
+    font-family: 'Secular One', sans-serif;
+    font-size: 24px;
+    color: red;
+    border-radius: 7px;
+    border: none;
+}
+
+.header-title {
+    color:#fff;
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    margin-top: 200px;
+}
+
+.header-down {
+    position: relative;
+}
+
+.header-subtitle {
+    color: red;
+    font-size: 60px;
+}
+
+.header-button {
+    background-color: white;
+    padding: 14px 28px;
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Secular One', sans-serif;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background-color 0.3s linear;
+}
+
+.header-button:hover {
+    background-color: #FFCCFF;
+}
+
+.sort-nav {
+    padding: 50px;
+    margin: 0px 10px 0px 10px;
+    display: flex;
+}
+
+
+.sort-nav a {
+    text-decoration: none;
+}
+
+.sort-list div {
+    margin: 0px 10px 0px 10px;
+}
