@@ -14,7 +14,7 @@ module.exports = function Main({ isAuth, userLogin = '', children }) {
             </div>
             
             <div className="dropdown">
-              <button className="dropdown-toggle" easy-toggle="#dropdown" easy-class="show" easy-rcoe>
+              <button className="dropdown-toggle" easy-toggle="#dropdown" easy-class="show">
                 MENU</button><Menu isAuth={isAuth} userLogin={userLogin} />
             </div>
 

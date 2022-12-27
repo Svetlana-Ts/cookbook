@@ -5,7 +5,7 @@ module.exports = function Menu({ isAuth, userLogin }) {
   if (isAuth) {
     return (
       <div id="dropdown" className="dropdown-menu">
-        {userLogin && <p>{userLogin}</p>}
+        {userLogin && <p id="greeting">{`Welcome, ${userLogin}`}</p>}
           <a href="/favourites" className="dropdown-link">Favoutites</a>
           <a href="/auth/logout" className="dropdown-link">Log out</a>
      </div>   

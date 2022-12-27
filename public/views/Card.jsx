@@ -7,7 +7,7 @@ function Card({ isAuth, card }) {
       <div className="card-photo">
         {isAuth && (
           <a href={`/favourites/${card.id}`} className="card-btn-like">
-            Like
+            <img width="35px" height="35px" src="/img/like.png"/>
           </a>
         )}
         <img
