@@ -18,17 +18,10 @@ favouritesRouter.get('/', async (req, res) => {
 
       let allCards;
 
-      // if (req.query.order) {
       allCards = await User.findAll({
         include: User.Cards,
         where: { id: req.session.userId },
       });
-      // } else {
-      //   allCards = await User.findAll({
-      //     include: User.Cards,
-      //     where: { id: req.session.userId },
-      //   });
-      // }
 
       if (req.query.order) {
         if (sortBy === 'ASC') {
@@ -41,9 +34,6 @@ favouritesRouter.get('/', async (req, res) => {
           );
         }
       }
-
-      allCards[0].cards.forEach((item) => console.log(item.count));
-      // console.log(allCards[0].cards[0]);
 
       res.renderComponent(CardList, {
         isAuth,
