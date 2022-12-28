@@ -6,6 +6,9 @@ const CardList = require('../views/CardList');
 
 cardsRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
+  const colName = req.query.order;
+  const sortBy = req.query.sort;
+
   try {
     const user = await User.findByPk(req.session.userId);
     let userLogin = '';
@@ -13,8 +16,6 @@ cardsRouter.get('/', async (req, res) => {
       userLogin = user.login;
     }
 
-    const colName = req.query.order;
-    const sortBy = req.query.sort;
     let cards;
 
     if (req.query.order) {
