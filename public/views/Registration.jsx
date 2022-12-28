@@ -5,19 +5,23 @@ const Layout = require('./Layout');
 module.exports = function Login() {
   return (
     <Layout>
-      <h1>Регистрация</h1>
-      <form method="post" action="/auth/register">
-        <label htmlFor="emailInput">Почта</label>
-        <input type="email" id="emailInput" name="email" />
+      <div className="signin-form">
+        <h1 className="signin-title">Sign up</h1>
 
-        <label htmlFor="loginInput">Логин</label>
-        <input type="text" id="loginInput" name="login" />
+        <div className="wrapper">
+          <form className="signin" method="post" action="/auth/register" autocomplete="off">
+        
+            <input type="email" id="emailInput" name="email" placeholder="email"/>
+        
+            <input type="text" id="loginInput" name="login" placeholder="text"/>
 
-        <label htmlFor="passwordInput">Пароль</label>
-        <input type="password" id="passwordInput" name="password" />
+            <input type="password" id="passwordInput" name="password" placeholder="password" />
 
-        <button type="submit">Зарегистрироваться</button>
+            <button type="submit"><i class="fa-sharp fa-solid fa-caret-right"></i></button>
+
       </form>
+      </div>
+      </div>
     </Layout>
   );
 };

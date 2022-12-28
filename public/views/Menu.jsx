@@ -14,7 +14,7 @@ module.exports = function Menu({ isAuth, userLogin }) {
   return (
     <div id="dropdown" className="dropdown-menu">
         <a href="/auth/login" className="dropdown-link">Log in</a>
-        <a href="/auth/register" className="dropdown-link">Sign in</a>  
+        <a href="/auth/register" className="dropdown-link">Sign up</a>  
     </div>
   );
 };

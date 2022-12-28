@@ -10,6 +10,7 @@ module.exports = function Layout({ children }) {
         <title>CookBook</title>
         <link rel="stylesheet" href="/css/style.css"/>
         <script src="https://cdn.jsdelivr.net/npm/easy-toggler@2.2.7"></script>
+        <script src="https://kit.fontawesome.com/c18a989bb6.js" crossorigin="anonymous"></script>
       </head>
       <body>{children}
       </body>
