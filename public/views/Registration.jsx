@@ -13,7 +13,7 @@ module.exports = function Login() {
         
             <input type="email" id="emailInput" name="email" placeholder="email"/>
         
-            <input type="text" id="loginInput" name="login" placeholder="text"/>
+            <input type="text" id="loginInput" name="login" placeholder="login"/>
 
             <input type="password" id="passwordInput" name="password" placeholder="password" />
 

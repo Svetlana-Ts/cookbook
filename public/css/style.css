@@ -139,7 +139,7 @@ body {
 
 .sort-list-item {
     font-size: 18px;
-    color: red;
+    color: white;
 }
 
 .card-group {
@@ -167,19 +167,22 @@ body {
 }
 .card-body-name a {
     text-decoration: none;
-    color: black;
-    opacity: 0.7;
+    color: white;
 } 
 
 .card-body-name a:hover {
     color: red;
-    opacity: 1;
 }
 
 table {
     text-align: center;
     font-family: 'Secular One', sans-serif;
     font-size: 14px;
+}
+
+table th {
+    color: #61916e;
+    padding: 0px 10px 0px 0px;
 }
 
 .card {
@@ -306,4 +309,56 @@ table {
 	text-shadow: 0 0 10px rgb(0, 126, 165);
 	cursor: pointer;
 }
+
+.recipe-container {
+    display: block;
+    width: 53%;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recipe-btn-like {
+    position: absolute;
+    right: 23px;
+    top: 10px;
+    
+}
+
+.recipe-photo {
+    position: relative;
+}
+
+.recipe-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+.recipe-list, .recipe-text {
+    font-family: 'Secular One', sans-serif;
+}
+
+.recipe-list h2, .recipe-text h2 {
+    color: #61916e;
+}
+
+.recipe-ing-list li {
+    list-style: none;
+}
+
+
+
 
