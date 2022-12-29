@@ -26,7 +26,6 @@ cardsRouter.get('/', async (req, res) => {
         offset,
         limit,
       });
-      console.log(cards);
     } else {
       const limit = 8;
       cards = await CardModel.findAll({
