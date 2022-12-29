@@ -17,13 +17,23 @@ cardsRouter.get('/', async (req, res) => {
     }
 
     let cards;
+    let offset = Number(req.query.offset) || 0;
 
     if (req.query.order) {
+      const limit = 8;
+      offset += limit;
       cards = await CardModel.findAll({
         order: [[colName, sortBy]],
+        offset,
+        limit,
       });
     } else {
-      cards = await CardModel.findAll();
+      const limit = 8;
+      cards = await CardModel.findAll({
+        order: [['id', 'ASC']],
+        offset,
+        limit,
+      });
     }
 
     let isAuth = false;
@@ -31,7 +41,13 @@ cardsRouter.get('/', async (req, res) => {
       isAuth = true;
     }
 
-    res.renderComponent(CardList, { isAuth, cards, userLogin, baseUrl });
+    res.renderComponent(CardList, {
+      isAuth,
+      cards,
+      userLogin,
+      baseUrl,
+      offset,
+    });
   } catch (error) {
     console.error(error);
     res.status(500);
