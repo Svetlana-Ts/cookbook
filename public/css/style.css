@@ -168,6 +168,7 @@ body {
 .card-body-name a {
     text-decoration: none;
     color: white;
+    transition: 0.09s linear;
 } 
 
 .card-body-name a:hover {
@@ -337,6 +338,15 @@ table th {
 
 .recipe-photo {
     position: relative;
+   
+}
+.recipe-photo {
+    transition: transform 0.4s;
+}
+
+.recipe-photo img:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 10px 5px 2px #666553;
 }
 
 .recipe-name {
