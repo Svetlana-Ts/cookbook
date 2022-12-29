@@ -340,7 +340,7 @@ table th {
     position: relative;
    
 }
-.recipe-photo {
+.recipe-photo img {
     transition: transform 0.4s;
 }
 
