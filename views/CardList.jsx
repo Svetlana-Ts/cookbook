@@ -22,14 +22,10 @@ module.exports = function CardList({ isAuth, cards, userLogin, baseUrl }) {
           ингредиентам
           <ul>
             <li>
-              <a href={`${baseUrl}/?order=ingredientsCount&sort=ASC`}>
-                по возрастанию
-              </a>
+              <a href={`${baseUrl}/?order=count&sort=ASC`}>по возрастанию</a>
             </li>
             <li>
-              <a href={`${baseUrl}/?order=ingredientsCount&sort=DESC`}>
-                по убыванию
-              </a>
+              <a href={`${baseUrl}/?order=count&sort=DESC`}>по убыванию</a>
             </li>
           </ul>
         </li>

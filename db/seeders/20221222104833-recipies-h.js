@@ -32,7 +32,7 @@ module.exports = {
           }
         }
         ingredList.push({
-          ingredientsCount: ingred.length,
+          count: ingred.length,
           ingredients: ingred.join('|'),
         });
       }
@@ -40,7 +40,7 @@ module.exports = {
         photo: item.strMealThumb,
         title: item.strMeal,
         ingredients: ingredList[i].ingredients,
-        ingredientsCount: ingredList[i].ingredientsCount,
+        count: ingredList[i].count,
         instruction: item.strInstructions,
         time: getRandomTime(),
         createdAt: new Date(),
