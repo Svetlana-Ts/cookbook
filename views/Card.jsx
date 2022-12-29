@@ -21,8 +21,10 @@ function Card({ isAuth, card }) {
         <p />
         <b>{card.title}</b>
         <div className="card-body-cook-time">{`Cooking time: ${card.time} minutes`}</div>
-        <div className="card-body-ingr-count">{`Ingredients count: ${card.ingredients.split('|').length} products`}</div>
-        <a className="card-body-name" href={`/cards/${card.id}`}>View the recipe</a>
+        <div className="card-body-ingr-count">{`Ingredients count: ${card.count} products`}</div>
+        <a className="card-body-name" href={`/cards/${card.id}`}>
+          View the recipe
+        </a>
       </div>
       <p />
     </li>
