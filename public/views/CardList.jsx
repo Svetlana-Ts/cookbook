@@ -20,8 +20,8 @@ module.exports = function CardList({ isAuth, cards, userLogin, baseUrl }) {
         <div className="sort-list-item">
             ingredients
             <div className="sort-item">
-              <div><a href={`${baseUrl}/?order=ingredientsCount&sort=ASC`}><img width="20px" height="20px" src="/img/arrow_up.svg"/></a></div>   
-              <div><a href={`${baseUrl}/?order=ingredientsCount&sort=DESC`}><img width="20px" height="20px" src="/img/arrow_down.svg"/></a></div>
+              <div><a href={`${baseUrl}/?order=сount&sort=ASC`}><img width="20px" height="20px" src="/img/arrow_up.svg"/></a></div>   
+              <div><a href={`${baseUrl}/?order=сount&sort=DESC`}><img width="20px" height="20px" src="/img/arrow_down.svg"/></a></div>
             </div>
         </div>
 

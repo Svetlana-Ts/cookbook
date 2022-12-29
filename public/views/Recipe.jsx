@@ -4,6 +4,7 @@ const Layout = require('./Layout');
 function Recipe({ isAuth, card }) {
   return (
     <Layout>
+      <a href="/" ><img width="100px" height="50px" src="/img/logo.png" className="logo-return"/></a>
       <div className="recipe-container">
 
         <div className="recipe">
@@ -38,8 +39,6 @@ function Recipe({ isAuth, card }) {
             <h2>Direction</h2>
             <div>{card.instruction}</div>
           </div>
-
-          <a href="/">Go back to Main Page</a>
 
         </div>      
       </div>

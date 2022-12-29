@@ -5,6 +5,7 @@ const Layout = require('./Layout');
 module.exports = function Login() {
   return (
     <Layout>
+      <a href="/" ><img width="100px" height="50px" src="/img/logo.png" className="logo-return"/></a>
       <div className="signin-form">
         <h1 className="signin-title">Log in</h1>
 
