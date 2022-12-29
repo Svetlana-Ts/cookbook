@@ -1,11 +1,14 @@
 const cardsRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
-const Recipe = require('../views/Recipe');
-const Error = require('../views/Error');
-const CardList = require('../views/CardList');
+const Recipe = require('../public/views/Recipe');
+const Error = require('../public/views/Error');
+const CardList = require('../public/views/CardList');
 
 cardsRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
+  const colName = req.query.order;
+  const sortBy = req.query.sort;
+
   try {
     const user = await User.findByPk(req.session.userId);
     let userLogin = '';
@@ -13,8 +16,6 @@ cardsRouter.get('/', async (req, res) => {
       userLogin = user.login;
     }
 
-    const colName = req.query.order;
-    const sortBy = req.query.sort;
     let cards;
     let offset = Number(req.query.offset) || 0;
 

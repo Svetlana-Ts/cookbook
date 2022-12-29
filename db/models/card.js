@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.TEXT,
       instruction: DataTypes.TEXT,
       ingredients: DataTypes.TEXT,
-      time: DataTypes.TEXT,
+      count: DataTypes.INTEGER,
+      time: DataTypes.INTEGER,
     },
     {
       sequelize,

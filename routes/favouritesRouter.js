@@ -1,23 +1,43 @@
 const favouritesRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
-const Error = require('../views/Error');
-const CardList = require('../views/CardList');
+const Error = require('../public/views/Error');
+const CardList = require('../public/views/CardList');
 
 favouritesRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
+  const colName = req.query.order;
+  const sortBy = req.query.sort;
+
   try {
     let isAuth = false;
     if (req.session.userId) {
       isAuth = true;
+
       const user = await User.findByPk(Number(req.session.userId));
       const userLogin = user.login;
-      const cards = await User.findAll({
+
+      let allCards;
+
+      allCards = await User.findAll({
         include: User.Cards,
         where: { id: req.session.userId },
       });
+
+      if (req.query.order) {
+        if (sortBy === 'ASC') {
+          allCards[0].cards.sort(
+            (card1, card2) => card1[colName] - card2[colName],
+          );
+        } else {
+          allCards[0].cards.sort(
+            (card1, card2) => card2[colName] - card1[colName],
+          );
+        }
+      }
+
       res.renderComponent(CardList, {
         isAuth,
-        cards: cards[0].cards,
+        cards: allCards[0].cards,
         userLogin,
         baseUrl,
       });
