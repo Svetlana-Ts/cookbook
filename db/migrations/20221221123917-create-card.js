@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      ingredientsCount: {
+      count: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
