@@ -1,7 +1,7 @@
 const favouritesRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
-const Error = require('../views/Error');
-const CardList = require('../views/CardList');
+const Error = require('../public/views/Error');
+const CardList = require('../public/views/CardList');
 
 favouritesRouter.get('/', async (req, res) => {
   const { baseUrl } = req;

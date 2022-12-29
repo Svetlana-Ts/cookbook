@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const authRouter = require('express').Router();
-const Login = require('../views/Login');
-const Registration = require('../views/Registration');
-const Error = require('../views/Error');
+const Login = require('../public/views/Login');
+const Registration = require('../public/views/Registration');
+const Error = require('../public/views/Error');
 const { User } = require('../db/models');
 
 authRouter.get('/login', (req, res) => {
