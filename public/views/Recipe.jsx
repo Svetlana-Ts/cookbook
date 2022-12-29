@@ -16,7 +16,7 @@ function Recipe({ isAuth, card }) {
               <img height="400px" width="400px" src={card.photo} alt="" />
               {isAuth && (
                 <a href={`/favourites/${card.id}`} className="recipe-btn-like">
-                  <img width="35px" height="35px" src="/img/like.png"/>
+                  <i class="fa-solid fa-heart"></i>
                 </a>
               )}
             </div> 

@@ -5,18 +5,19 @@ function Card({ isAuth, card }) {
     <li className="card">
 
       <div className="card-photo">
-        {isAuth && (
-          <a href={`/favourites/${card.id}`} className="card-btn-like">
-            <img width="35px" height="35px" src="/img/like.png"/>
-          </a>
-        )}
-        <a href={`/cards/${card.id}`}><img
+      <a href={`/cards/${card.id}`}><img
           width="250px"
           height="250px"
           src={card.photo}
           className="card-photo-img"
           alt=""
         /></a>
+        {isAuth && (
+          <a href={`/favourites/${card.id}`} className="card-btn-like">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+        )}
+      
       </div>
 
       <div className="card-body"> 
