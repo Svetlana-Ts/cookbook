@@ -6,7 +6,7 @@ module.exports = function Menu({ isAuth, userLogin }) {
     return (
       <div id="dropdown" className="dropdown-menu">
         {userLogin && <p id="greeting">{`Welcome, ${userLogin}`}</p>}
-          <a href="/favourites" className="dropdown-link">Favoutites</a>
+          <a href="/favourites" className="dropdown-link">Favourites</a>
           <a href="/auth/logout" className="dropdown-link">Log out</a>
      </div>   
     );

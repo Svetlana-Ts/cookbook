@@ -10,13 +10,15 @@ function Card({ isAuth, card }) {
             <img width="35px" height="35px" src="/img/like.png"/>
           </a>
         )}
-        <img
-          width="250px"
-          height="250px"
-          src={card.photo}
-          className="card-photo-img"
-          alt=""
-        />
+        <a href={`/cards/${card.id}`}>
+          <img
+            width="250px"
+            height="250px"
+            src={card.photo}
+            className="card-photo-img"
+            alt=""
+          />
+        </a>
       </div>
 
       <div className="card-body"> 
