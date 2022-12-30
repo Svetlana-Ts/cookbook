@@ -10,25 +10,22 @@ module.exports = function CardList({ isAuth, cards, userLogin, baseUrl, offset }
         <div>Sort by:</div>
 
         <div className="sort-list-item">
-            Cooking time
+            Cooking time:
             <div className="sort-item">
-              <div><a href={`${baseUrl}/?offset=${offset}&order=time&sort=ASC`}><img width="20px" height="20px" src="/img/arrow_up.svg"/></a></div>
-              <div><a href={`${baseUrl}/?offset=${offset}&order=time&sort=DESC`}><img width="20px" height="20px" src="/img/arrow_down.svg"/></a></div>
+              <div><a href={`${baseUrl}/?offset=${offset}&order=time&sort=ASC`}><i class="fa-sharp fa-solid fa-caret-up"></i></a></div>
+              <div><a href={`${baseUrl}/?offset=${offset}&order=time&sort=DESC`}><i class="fa-solid fa-caret-down"></i></a></div>
             </div>
         </div>
         
         <div className="sort-list-item">
-            ingredients
+            ingredients:
             <div className="sort-item">
-              <div><a href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}><img width="20px" height="20px" src="/img/arrow_up.svg"/></a></div>   
-              <div><a href={`${baseUrl}/?offset=${offset}&order=count&sort=DESC`}><img width="20px" height="20px" src="/img/arrow_down.svg"/></a></div>
+              <div><a href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}><i class="fa-sharp fa-solid fa-caret-up"></i></a></div>   
+              <div><a href={`${baseUrl}/?offset=${offset}&order=count&sort=DESC`}><i class="fa-solid fa-caret-down"></i></a></div>
             </div>
         </div>
 
-        <div>
-          {(offset === 0) ? ' ' : <a href={`${baseUrl}/?offset=${offset - 8}`}>Previous Page</a>}{'  '}
-          {(offset > 280) ? ' ' : <a href={`${baseUrl}/?offset=${offset + 8}`}>Next Page</a>}
-        </div>
+       
 
       </div>
 
@@ -37,6 +34,11 @@ module.exports = function CardList({ isAuth, cards, userLogin, baseUrl, offset }
           <Card key={card.id} isAuth={isAuth} card={card} />
         ))}
       </ul>
+
+      <div className="pages">
+          {(offset === 0) ? ' ' : <a href={`${baseUrl}/?offset=${offset - 8}`}>Previous Page</a>}{'  '}
+          {(offset > 280) ? ' ' : <a href={`${baseUrl}/?offset=${offset + 8}`}>Next Page</a>}
+      </div>
     </Main>
   );
 };

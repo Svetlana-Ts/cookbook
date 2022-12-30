@@ -139,12 +139,17 @@ body {
 }
 
 .sort-nav div {
-    margin: 0px 10px 0px 10px;
+    margin: 0px 20px 0px 10px;
 }
 
 .sort-list-item {
     font-size: 18px;
-    color: white;
+    color: rgb(235, 173, 154);
+}
+
+.sort-item a {
+    font-size: 24px;
+    color: #61916e;
 }
 
 .card-group {
@@ -156,6 +161,23 @@ body {
 .card-group li {
     margin: 25px;
     list-style: none;
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    font-family: 'Secular One', sans-serif;
+    font-size: 18px;
+}
+
+.pages a {
+    text-decoration: none;
+    margin: 0px 35px 10px 0px;
+    color: rgb(235, 173, 154);
+}
+
+.pages a:hover {
+    color: black;
 }
 
 .card-body {
@@ -225,14 +247,10 @@ table th {
     right: 20px;
     text-decoration: none;
     font-size: 28px;
-    
-}
-
-i {
     color: #61916e;
 }
 
-.like-active{
+.card-btn-like:active{
     color: red;
   }
 
