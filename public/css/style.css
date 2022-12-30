@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;600&family=Secular+One&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-/* @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'); */
 
 
 * {
@@ -11,10 +10,16 @@
 
 html {  
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
     background: rgb(52, 56, 61);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .container {
@@ -24,7 +29,7 @@ body {
 .header {
     background: url(../img/для_навигации.jpg) no-repeat center center fixed;
     height: 100vh;
-    background-size: cover;
+    background-size: cover;  
 }
 
 .header-line {
@@ -165,10 +170,12 @@ body {
     font-weight: 600;
     font-size: 18px;
 }
+
 .card-body-name a {
     text-decoration: none;
     color: white;
     transition: 0.09s linear;
+    text-overflow: ellipsis;
 } 
 
 .card-body-name a:hover {
@@ -193,6 +200,7 @@ table th {
     align-items: center;
 }
 
+
 .card-photo img {
     border-radius: 10px;
     transition: transform 0.4s;
@@ -208,13 +216,28 @@ table th {
     font-weight: 600;
 }
 
-
 .card-btn-like {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 40px;
-    left: 100px;
+    top: 10px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 28px;
+    
+}
+
+i {
+    color: #61916e;
+}
+
+.like-active{
+    color: red;
+  }
+
+
+.card-photo {
     position: relative;
 }
 
@@ -238,6 +261,7 @@ table th {
 	margin-top: -75px;
 }
 
+/* Styling login form */
 .signin {
     height: 90px;
 	width: 300px;
@@ -266,13 +290,13 @@ table th {
 	border-bottom-left-radius: 8px;
 }
 
-.signin  input[type="email"], .signin  input[type="password"], .signin  input[type="text"], .signin button[type="submit"]{
+.signin  input[type="email"], .signin  input[type="password"], .signin button[type="submit"]{
 	background: rgb(28, 30, 33);
 	box-shadow: inset -100px -100px 0 rgb(28, 30, 33); /*Prevent yellow autofill color*/
 	color: rgb(52, 56, 61);
 }
 
-.signin input[type="email"], .signin input[type="password"], .signin  input[type="text"] {
+.signin input[type="email"], .signin input[type="password"] {
     position: relative;
 	display: block;
 	width: 300px;
@@ -284,7 +308,7 @@ table th {
 	font-weight: 700;
 }
 
-.signin input[type="email"]:focus, .signin input[type="password"]:focus, .signin  input[type="text"]:focus {
+.signin input[type="email"]:focus, .signin input[type="password"]:focus {
 	color: rgb(255, 255, 255);
 }
 
@@ -311,11 +335,96 @@ table th {
 	cursor: pointer;
 }
 
+/* Styling registration form */
+.signup {
+    height: 90px;
+	width: 300px;
+	border-radius: 8px;
+	position: relative;
+}
+
+.signup::before {
+	display: block;
+	position: relative;
+	height: 2px;
+	background: rgb(52, 56, 61);
+	content: '';
+	top: 44px;
+	margin-left: 20px;
+	z-index: 1;
+}
+.signup::after {
+	display: block;
+	position: relative;
+	height: 2px;
+	background: rgb(52, 56, 61);
+	content: '';
+	bottom: 44px;
+	margin-left: 20px;
+	z-index: 1;
+}
+
+.signup input:first-of-type{
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+}
+
+.signup input:last-of-type{
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.signup  input[type="email"], .signup  input[type="password"], .signup  input[type="text"], .signup button[type="submit"]{
+	background: rgb(28, 30, 33);
+	box-shadow: inset -100px -100px 0 rgb(28, 30, 33); /*Prevent yellow autofill color*/
+	color: rgb(52, 56, 61);
+}
+
+.signup input[type="email"], .signup input[type="password"], .signup  input[type="text"] {
+    position: relative;
+	display: block;
+	width: 300px;
+	height: 45px;
+	border: 0;
+	outline: 0;
+	top: -2px;
+	padding: 0 0 0 20px;
+	font-weight: 700;
+}
+
+.signup input[type="email"]:focus, .signup input[type="password"]:focus, .signup  input[type="text"]:focus {
+	color: rgb(255, 255, 255);
+}
+
+.signup button {
+	display: block;
+	position: absolute;
+	width: 52px;
+	height: 52px;
+	color: rgb(52, 56, 61);
+	border-radius: 50px;
+	outline: 0;
+	z-index: 2;
+	top: 44px;
+	right: -24px;
+	border: 6px solid rgb(52, 56, 61);
+	font-size: 25px;
+	text-indent: 0px;
+	text-align: center;
+}
+
+.signup button[type="submit"]:hover{
+	color: rgb(0, 126, 165);
+	text-shadow: 0 0 10px rgb(0, 126, 165);
+	cursor: pointer;
+}
+
+
 .recipe-container {
     display: block;
     width: 53%;
     margin-left: 300px;
-    margin-top: 30px;
+    margin-top: 0px;
 }
 
 .recipe {
@@ -333,20 +442,17 @@ table th {
     position: absolute;
     right: 23px;
     top: 10px;
-    
+    text-decoration: none;
+    font-size: 44px;
+    color: #61916e;
 }
 
 .recipe-photo {
     position: relative;
-   
-}
-.recipe-photo img {
-    transition: transform 0.4s;
 }
 
-.recipe-photo img:hover {
-    transform: scale(1.1);
-    box-shadow: 8px 10px 5px 2px #666553;
+.recipe-photo img {
+    border-radius: 15px;
 }
 
 .recipe-name {
@@ -369,6 +475,9 @@ table th {
     list-style: none;
 }
 
-
+.logo-return {
+    margin: 0;
+    padding: 10px 0px 0px 10px;
+}
 
 

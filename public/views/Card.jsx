@@ -5,25 +5,24 @@ function Card({ isAuth, card }) {
     <li className="card">
 
       <div className="card-photo">
+      <a href={`/cards/${card.id}`}><img
+          width="250px"
+          height="250px"
+          src={card.photo}
+          className="card-photo-img"
+          alt=""
+        /></a>
         {isAuth && (
           <a href={`/favourites/${card.id}`} className="card-btn-like">
-            <img width="35px" height="35px" src="/img/like.png"/>
+            <i class="fa-solid fa-heart"></i>
           </a>
         )}
-        <a href={`/cards/${card.id}`}>
-          <img
-            width="250px"
-            height="250px"
-            src={card.photo}
-            className="card-photo-img"
-            alt=""
-          />
-        </a>
+
       </div>
 
       <div className="card-body"> 
         <div className="card-body-name">
-          <a href={`/cards/${card.id}`}>{card.title}</a>
+          <a href={`/cards/${card.id}`}>{card.title.length > 30 ? `${card.title.slice(0,25)}...` : card.title}</a>
         </div>
 
         <table className="card-table">
