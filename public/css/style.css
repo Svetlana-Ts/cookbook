@@ -175,6 +175,7 @@ body {
     text-decoration: none;
     color: white;
     transition: 0.09s linear;
+    text-overflow: ellipsis;
 } 
 
 .card-body-name a:hover {
@@ -224,8 +225,17 @@ table th {
     right: 20px;
     text-decoration: none;
     font-size: 28px;
+    
+}
+
+i {
     color: #61916e;
 }
+
+.like-active{
+    color: red;
+  }
+
 
 .card-photo {
     position: relative;

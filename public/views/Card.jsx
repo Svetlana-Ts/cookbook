@@ -22,7 +22,7 @@ function Card({ isAuth, card }) {
 
       <div className="card-body"> 
         <div className="card-body-name">
-          <a href={`/cards/${card.id}`}>{card.title}</a>
+          <a href={`/cards/${card.id}`}>{card.title.length > 30 ? `${card.title.slice(0,25)}...` : card.title}</a>
         </div>
 
         <table className="card-table">
