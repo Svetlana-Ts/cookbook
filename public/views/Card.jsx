@@ -17,7 +17,7 @@ function Card({ isAuth, card }) {
             <i class="fa-solid fa-heart"></i>
           </a>
         )}
-      
+
       </div>
 
       <div className="card-body"> 
