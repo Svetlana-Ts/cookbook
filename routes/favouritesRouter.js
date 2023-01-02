@@ -49,16 +49,31 @@ favouritesRouter.get('/', async (req, res) => {
 });
 
 favouritesRouter.get('/:id', async (req, res) => {
-  let isLiked = false;
   try {
     const card = await CardModel.findByPk(Number(req.params.id));
-    const user = await User.findByPk(Number(req.session.userId));
-    user.addCard(card);
-    user.save();
+    const user = await User.findOne({
+      where: { id: Number(req.session.userId) },
+      include: User.Cards,
+    });
 
-    // const userHasCard = user.getCard(card);
-    console.log('has card: ', user.hasCard);
-    res.redirect('/');
+    let userHasCard = false;
+
+    user.cards.forEach((item) => {
+      if (item.dataValues.id === card.dataValues.id) {
+        userHasCard = true;
+      }
+      return userHasCard;
+    });
+
+    if (userHasCard) {
+      user.removeCard(card);
+      user.save();
+    } else {
+      user.addCard(card);
+      user.save();
+    }
+
+    res.redirect('/cards');
   } catch (error) {
     res.renderComponent(Error, { error });
   }

@@ -8,7 +8,6 @@ module.exports = function CardList({
   userLogin,
   baseUrl,
   offset,
-  isLiked,
 }) {
   return (
     <Main userLogin={userLogin} isAuth={isAuth}>
@@ -20,12 +19,12 @@ module.exports = function CardList({
           <div className="sort-item">
             <div>
               <a href={`${baseUrl}/?offset=${offset}&order=time&sort=ASC`}>
-                <i class="fa-sharp fa-solid fa-caret-up"></i>
+                <i className="fa-sharp fa-solid fa-caret-up"></i>
               </a>
             </div>
             <div>
               <a href={`${baseUrl}/?offset=${offset}&order=time&sort=DESC`}>
-                <i class="fa-solid fa-caret-down"></i>
+                <i className="fa-solid fa-caret-down"></i>
               </a>
             </div>
           </div>
@@ -55,7 +54,7 @@ module.exports = function CardList({
 
       <ul className="card-group">
         {cards.map((card) => (
-          <Card key={card.id} isAuth={isAuth} card={card} isLiked={isLiked} />
+          <Card key={card.id} isAuth={isAuth} card={card} />
         ))}
       </ul>
 

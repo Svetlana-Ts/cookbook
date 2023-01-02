@@ -1,21 +1,9 @@
 const React = require('react');
 
-function Card({ isAuth, card, isLiked }) {
-  const like = isLiked ? (
-    'Unlike'
-  ) : (
-    <img width="35px" height="35px" src="/img/like.png" />
-  );
-
+function Card({ isAuth, card }) {
   return (
     <li className="card">
       <div className="card-photo">
-        {isAuth && (
-          <a href={`/favourites/${card.id}`} className="card-btn-like">
-            {/* <img width="35px" height="35px" src="/img/like.png" /> */}
-            {like}
-          </a>
-        )}
         <a href={`/cards/${card.id}`}>
           <img
             width="250px"
@@ -26,8 +14,8 @@ function Card({ isAuth, card, isLiked }) {
           />
         </a>
         {isAuth && (
-          <a href={`/favourites/${card.id}`} className="card-btn-like">
-            <i class="fa-solid fa-heart"></i>
+          <a href={`/favourites/${card.id}`} className="card-btn-like js-like">
+            <i className="fa-solid fa-heart"></i>
           </a>
         )}
       </div>
