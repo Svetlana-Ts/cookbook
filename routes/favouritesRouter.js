@@ -49,11 +49,15 @@ favouritesRouter.get('/', async (req, res) => {
 });
 
 favouritesRouter.get('/:id', async (req, res) => {
+  let isLiked = false;
   try {
     const card = await CardModel.findByPk(Number(req.params.id));
     const user = await User.findByPk(Number(req.session.userId));
     user.addCard(card);
     user.save();
+
+    // const userHasCard = user.getCard(card);
+    console.log('has card: ', user.hasCard);
     res.redirect('/');
   } catch (error) {
     res.renderComponent(Error, { error });
