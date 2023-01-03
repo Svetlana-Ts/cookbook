@@ -9,7 +9,11 @@ module.exports = function CardList({
   baseUrl,
   offset,
   userId,
+  colName,
+  sortBy,
+  maxCount,
 }) {
+  console.log(maxCount);
   return (
     <Main userLogin={userLogin} isAuth={isAuth}>
       <div id="card-list" className="sort-nav">
@@ -46,11 +50,6 @@ module.exports = function CardList({
             </a>
           </div>
         </div>
-        <div>
-          <a href={`${baseUrl}/?order=count&sort=DESC`}>
-            <img width="20px" height="20px" src="/img/arrow_down.svg" />
-          </a>
-        </div>
       </div>
 
       <ul className="card-group">
@@ -63,13 +62,25 @@ module.exports = function CardList({
         {offset === 0 ? (
           ' '
         ) : (
-          <a href={`${baseUrl}/?offset=${offset - 8}`}>Previous Page</a>
+          <a
+            href={`${baseUrl}/?offset=${
+              offset - 8
+            }&order=${colName}&sort=${sortBy}`}
+          >
+            Previous Page
+          </a>
         )}
         {'  '}
-        {offset > 280 ? (
+        {offset > maxCount - 9 ? (
           ' '
         ) : (
-          <a href={`${baseUrl}/?offset=${offset + 8}`}>Next Page</a>
+          <a
+            href={`${baseUrl}/?offset=${
+              offset + 8
+            }&order=${colName}&sort=${sortBy}`}
+          >
+            Next Page
+          </a>
         )}
       </div>
     </Main>
