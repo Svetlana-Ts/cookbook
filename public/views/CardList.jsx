@@ -8,6 +8,7 @@ module.exports = function CardList({
   userLogin,
   baseUrl,
   offset,
+  userId,
 }) {
   return (
     <Main userLogin={userLogin} isAuth={isAuth}>
@@ -54,7 +55,7 @@ module.exports = function CardList({
 
       <ul className="card-group">
         {cards.map((card) => (
-          <Card key={card.id} isAuth={isAuth} card={card} />
+          <Card key={card.id} isAuth={isAuth} card={card} userId={userId} />
         ))}
       </ul>
 

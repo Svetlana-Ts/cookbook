@@ -15,29 +15,33 @@ favouritesRouter.get('/', async (req, res) => {
 
       const user = await User.findByPk(Number(req.session.userId));
       const userLogin = user.login;
+      let allCards = await CardModel.findAll({ include: CardModel.Users });
 
-      let allCards;
+      const cards = [];
+      allCards.forEach((card) =>
+        card.users.forEach((user) => {
+          if (user.id === req.session.userId) {
+            cards.push(card);
+          }
+        }),
+      );
 
-      allCards = await User.findAll({
-        include: User.Cards,
-        where: { id: req.session.userId },
-      });
+      // let allCards = await User.findAll({
+      //   include: User.Cards,
+      //   where: { id: req.session.userId },
+      // });
 
       if (req.query.order) {
         if (sortBy === 'ASC') {
-          allCards[0].cards.sort(
-            (card1, card2) => card1[colName] - card2[colName],
-          );
+          cards.sort((card1, card2) => card1[colName] - card2[colName]);
         } else {
-          allCards[0].cards.sort(
-            (card1, card2) => card2[colName] - card1[colName],
-          );
+          cards.sort((card1, card2) => card2[colName] - card1[colName]);
         }
       }
 
       res.renderComponent(CardList, {
         isAuth,
-        cards: allCards[0].cards,
+        cards,
         userLogin,
         baseUrl,
       });
@@ -73,7 +77,7 @@ favouritesRouter.get('/:id', async (req, res) => {
       user.save();
     }
 
-    res.redirect('/cards');
+    res.redirect('/');
   } catch (error) {
     res.renderComponent(Error, { error });
   }

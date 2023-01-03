@@ -18,7 +18,7 @@ module.exports = function Layout({ children }) {
           src="https://kit.fontawesome.com/c18a989bb6.js"
           crossOrigin="anonymous"
         ></script>
-        {/* <script defer src="/js/index.js"></script> */}
+        <script defer src="/js/index.js"></script>
       </head>
       <body>{children}</body>
     </html>

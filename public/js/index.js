@@ -8,17 +8,17 @@
 //   icon.classList.add('like-active');
 // });
 
-const likes = Array.from(document.querySelectorAll('.js-like'));
-let counter = 0;
+// const likes = Array.from(document.querySelectorAll('.js-like'));
+// let counter = 0;
 
-likes.forEach((like) => {
-  like.addEventListener('click', () => {
-    if (counter === 0) {
-      like.style.color = 'red';
-      counter = 1;
-    } else {
-      like.style.color = '#61916e';
-      counter = 0;
-    }
-  });
-});
+// likes.forEach((like) => {
+//   like.addEventListener('click', () => {
+//     if (counter === 0) {
+//       like.style.color = 'red';
+//       counter = 1;
+//     } else {
+//       like.style.color = '#61916e';
+//       counter = 0;
+//     }
+//   });
+// });
