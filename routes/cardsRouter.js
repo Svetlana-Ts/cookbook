@@ -6,8 +6,8 @@ const CardList = require('../public/views/CardList');
 
 cardsRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
-  const colName = req.query.order;
-  const sortBy = req.query.sort;
+  const colName = req.query.order !== undefined ? req.query.order : 'id';
+  const sortBy = req.query.sort !== undefined ? req.query.sort : 'ASC';
 
   try {
     const user = await User.findByPk(req.session.userId);
@@ -16,27 +16,18 @@ cardsRouter.get('/', async (req, res) => {
       userLogin = user.login;
     }
 
-    let cards;
     let offset = Number(req.query.offset) || 0;
+    const limit = 8;
 
-    if (req.query.order) {
-      const limit = 8;
-      offset += limit;
-      cards = await CardModel.findAll({
-        include: CardModel.Users,
-        order: [[colName, sortBy]],
-        offset,
-        limit,
-      });
-    } else {
-      const limit = 8;
-      cards = await CardModel.findAll({
-        include: CardModel.Users,
-        order: [['id', 'ASC']],
-        offset,
-        limit,
-      });
-    }
+    const cards = await CardModel.findAll({
+      include: CardModel.Users,
+      order: [[colName, sortBy]],
+      offset,
+      limit,
+    });
+
+    const allCards = await CardModel.findAll();
+    const maxCount = allCards.length;
 
     let isAuth = false;
     if (req.session.userId) {
@@ -50,8 +41,10 @@ cardsRouter.get('/', async (req, res) => {
       baseUrl,
       offset,
       userId: req.session.userId,
+      colName,
+      sortBy,
+      maxCount,
     });
-    // res.json(cards);
   } catch (error) {
     console.error(error);
     res.status(500);
@@ -69,8 +62,9 @@ cardsRouter.get('/:id', async (req, res) => {
     const cardId = req.params.id;
     const card = await CardModel.findOne({
       where: { id: cardId },
+      include: CardModel.Users,
     });
-    res.renderComponent(Recipe, { isAuth, card });
+    res.renderComponent(Recipe, { isAuth, card, userId: req.session.userId });
   } catch (error) {
     res.status(500);
     res.renderComponent(Error, { error });
