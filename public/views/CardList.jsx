@@ -13,7 +13,6 @@ module.exports = function CardList({
   sortBy,
   maxCount,
 }) {
-  console.log(maxCount);
   return (
     <Main userLogin={userLogin} isAuth={isAuth}>
       <div id="card-list" className="sort-nav">
@@ -57,32 +56,35 @@ module.exports = function CardList({
           <Card key={card.id} isAuth={isAuth} card={card} userId={userId} />
         ))}
       </ul>
-
-      <div className="pages">
-        {offset === 0 ? (
-          ' '
-        ) : (
-          <a
-            href={`${baseUrl}/?offset=${
-              offset - 8
-            }&order=${colName}&sort=${sortBy}`}
-          >
-            Previous Page
-          </a>
-        )}
-        {'  '}
-        {offset > maxCount - 9 ? (
-          ' '
-        ) : (
-          <a
-            href={`${baseUrl}/?offset=${
-              offset + 8
-            }&order=${colName}&sort=${sortBy}`}
-          >
-            Next Page
-          </a>
-        )}
-      </div>
+      {baseUrl === '/cards' ? (
+        <div className="pages">
+          {offset === 0 ? (
+            ' '
+          ) : (
+            <a
+              href={`${baseUrl}/?offset=${
+                offset - 8
+              }&order=${colName}&sort=${sortBy}`}
+            >
+              Previous Page
+            </a>
+          )}
+          {'  '}
+          {offset > maxCount - 9 ? (
+            ' '
+          ) : (
+            <a
+              href={`${baseUrl}/?offset=${
+                offset + 8
+              }&order=${colName}&sort=${sortBy}`}
+            >
+              Next Page
+            </a>
+          )}
+        </div>
+      ) : (
+        ''
+      )}
     </Main>
   );
 };

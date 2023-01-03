@@ -62,8 +62,9 @@ cardsRouter.get('/:id', async (req, res) => {
     const cardId = req.params.id;
     const card = await CardModel.findOne({
       where: { id: cardId },
+      include: CardModel.Users,
     });
-    res.renderComponent(Recipe, { isAuth, card });
+    res.renderComponent(Recipe, { isAuth, card, userId: req.session.userId });
   } catch (error) {
     res.status(500);
     res.renderComponent(Error, { error });
