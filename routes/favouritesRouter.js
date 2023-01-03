@@ -7,29 +7,25 @@ favouritesRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
   const colName = req.query.order;
   const sortBy = req.query.sort;
+  const { userId } = req.session;
 
   try {
     let isAuth = false;
     if (req.session.userId) {
       isAuth = true;
 
-      const user = await User.findByPk(Number(req.session.userId));
+      const user = await User.findByPk(Number(userId));
       const userLogin = user.login;
       let allCards = await CardModel.findAll({ include: CardModel.Users });
 
       const cards = [];
       allCards.forEach((card) =>
         card.users.forEach((user) => {
-          if (user.id === req.session.userId) {
+          if (user.id === userId) {
             cards.push(card);
           }
         }),
       );
-
-      // let allCards = await User.findAll({
-      //   include: User.Cards,
-      //   where: { id: req.session.userId },
-      // });
 
       if (req.query.order) {
         if (sortBy === 'ASC') {
@@ -44,6 +40,7 @@ favouritesRouter.get('/', async (req, res) => {
         cards,
         userLogin,
         baseUrl,
+        userId,
       });
     }
   } catch (error) {

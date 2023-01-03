@@ -52,8 +52,6 @@ function Card({ isAuth, card, userId }) {
             <td>{`${card.ingredients.split('|').length} products`}</td>
           </tr>
         </table>
-
-        {/* <a className="card-body-name" href={`/cards/${card.id}`}>View the recipe</a> */}
       </div>
     </li>
   );
