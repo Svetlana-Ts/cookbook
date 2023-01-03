@@ -23,6 +23,7 @@ cardsRouter.get('/', async (req, res) => {
       const limit = 8;
       offset += limit;
       cards = await CardModel.findAll({
+        include: CardModel.Users,
         order: [[colName, sortBy]],
         offset,
         limit,
@@ -30,6 +31,7 @@ cardsRouter.get('/', async (req, res) => {
     } else {
       const limit = 8;
       cards = await CardModel.findAll({
+        include: CardModel.Users,
         order: [['id', 'ASC']],
         offset,
         limit,
@@ -47,7 +49,9 @@ cardsRouter.get('/', async (req, res) => {
       userLogin,
       baseUrl,
       offset,
+      userId: req.session.userId,
     });
+    // res.json(cards);
   } catch (error) {
     console.error(error);
     res.status(500);

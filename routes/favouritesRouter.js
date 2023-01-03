@@ -7,39 +7,40 @@ favouritesRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
   const colName = req.query.order;
   const sortBy = req.query.sort;
+  const { userId } = req.session;
 
   try {
     let isAuth = false;
     if (req.session.userId) {
       isAuth = true;
 
-      const user = await User.findByPk(Number(req.session.userId));
+      const user = await User.findByPk(Number(userId));
       const userLogin = user.login;
+      let allCards = await CardModel.findAll({ include: CardModel.Users });
 
-      let allCards;
-
-      allCards = await User.findAll({
-        include: User.Cards,
-        where: { id: req.session.userId },
-      });
+      const cards = [];
+      allCards.forEach((card) =>
+        card.users.forEach((user) => {
+          if (user.id === userId) {
+            cards.push(card);
+          }
+        }),
+      );
 
       if (req.query.order) {
         if (sortBy === 'ASC') {
-          allCards[0].cards.sort(
-            (card1, card2) => card1[colName] - card2[colName],
-          );
+          cards.sort((card1, card2) => card1[colName] - card2[colName]);
         } else {
-          allCards[0].cards.sort(
-            (card1, card2) => card2[colName] - card1[colName],
-          );
+          cards.sort((card1, card2) => card2[colName] - card1[colName]);
         }
       }
 
       res.renderComponent(CardList, {
         isAuth,
-        cards: allCards[0].cards,
+        cards,
         userLogin,
         baseUrl,
+        userId,
       });
     }
   } catch (error) {
@@ -51,9 +52,28 @@ favouritesRouter.get('/', async (req, res) => {
 favouritesRouter.get('/:id', async (req, res) => {
   try {
     const card = await CardModel.findByPk(Number(req.params.id));
-    const user = await User.findByPk(Number(req.session.userId));
-    user.addCard(card);
-    user.save();
+    const user = await User.findOne({
+      where: { id: Number(req.session.userId) },
+      include: User.Cards,
+    });
+
+    let userHasCard = false;
+
+    user.cards.forEach((item) => {
+      if (item.dataValues.id === card.dataValues.id) {
+        userHasCard = true;
+      }
+      return userHasCard;
+    });
+
+    if (userHasCard) {
+      user.removeCard(card);
+      user.save();
+    } else {
+      user.addCard(card);
+      user.save();
+    }
+
     res.redirect('/');
   } catch (error) {
     res.renderComponent(Error, { error });
