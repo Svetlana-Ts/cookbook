@@ -14,7 +14,7 @@ module.exports = function CardList({
   maxCount,
 }) {
   return (
-    <Main userLogin={userLogin} isAuth={isAuth}>
+    <Main userLogin={userLogin} isAuth={isAuth} baseUrl={baseUrl}>
       <div id="card-list" className="sort-nav">
         <div className="sort-by">Sort by:</div>
 
@@ -35,7 +35,7 @@ module.exports = function CardList({
         </div>
 
         <div className="sort-list-item">
-          ingredients
+          Ingredients
           <div className="sort-item">
             <div>
               <a href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}>

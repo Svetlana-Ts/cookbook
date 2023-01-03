@@ -16,6 +16,7 @@ html {
 
 body {
   background: #827668;
+  /* background: rgb(52, 56, 61); */
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -41,6 +42,7 @@ body {
 .main {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .dropdown {
@@ -69,6 +71,7 @@ body {
   opacity: 0.7;
   text-decoration: none;
   font-size: 24px;
+  transition: opacity 0.3s;
 }
 
 .dropdown-menu a:hover {
@@ -501,15 +504,17 @@ body {
 
 .recipe-container {
   display: block;
-  width: 53%;
-  margin-left: 300px;
-  margin-top: 0px;
+  width: 50%;
 }
 
 .recipe {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .recipe-info {
@@ -537,7 +542,7 @@ body {
 .recipe-name {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 30px;
   color: #fff;
   padding-bottom: 10px;
 }
@@ -549,7 +554,8 @@ body {
 
 .recipe-list h2,
 .recipe-text h2 {
-  color: #61916e;
+  color: rgb(235, 173, 154);
+  margin-top: 20px;
 }
 
 .recipe-ing-list li {
@@ -557,6 +563,41 @@ body {
 }
 
 .logo-return {
-  margin: 0;
-  padding: 10px 0px 0px 10px;
+  margin: 30px;
+}
+
+.header-mini {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #372f25;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+.header-mini-box {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-link {
+  padding: 8px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.3s;
+}
+
+.logout-link:hover {
+  background-color: #ffccff;
+}
+
+.enter {
+  background: rgb(52, 56, 61);
+  height: 100vh;
 }
