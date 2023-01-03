@@ -16,10 +16,10 @@ module.exports = function CardList({
   return (
     <Main userLogin={userLogin} isAuth={isAuth}>
       <div id="card-list" className="sort-nav">
-        <div>Sort by:</div>
+        <div className="sort-by">Sort by:</div>
 
         <div className="sort-list-item">
-          Cooking time:
+          Cooking time
           <div className="sort-item">
             <div>
               <a href={`${baseUrl}/?offset=${offset}&order=time&sort=ASC`}>
@@ -33,20 +33,20 @@ module.exports = function CardList({
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="sort-list-item">
-        ingredients:
-        <div className="sort-item">
-          <div>
-            <a href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}>
-              <i class="fa-sharp fa-solid fa-caret-up"></i>
-            </a>
-          </div>
-          <div>
-            <a href={`${baseUrl}/?offset=${offset}&order=count&sort=DESC`}>
-              <i class="fa-solid fa-caret-down"></i>
-            </a>
+        <div className="sort-list-item">
+          ingredients
+          <div className="sort-item">
+            <div>
+              <a href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}>
+                <i class="fa-sharp fa-solid fa-caret-up"></i>
+              </a>
+            </div>
+            <div>
+              <a href={`${baseUrl}/?offset=${offset}&order=count&sort=DESC`}>
+                <i class="fa-solid fa-caret-down"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -56,6 +56,7 @@ module.exports = function CardList({
           <Card key={card.id} isAuth={isAuth} card={card} userId={userId} />
         ))}
       </ul>
+
       {baseUrl === '/cards' ? (
         <div className="pages">
           {offset === 0 ? (

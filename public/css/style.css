@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background: rgb(52, 56, 61);
+  background: #827668;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -36,6 +36,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdown {
@@ -86,6 +91,12 @@ body {
   color: red;
   border-radius: 7px;
   border: none;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.dropdown button:hover {
+  background-color: #ffccff;
 }
 
 .header-title {
@@ -128,7 +139,8 @@ body {
   padding: 50px;
   margin: 0px 10px 0px 10px;
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   font-family: 'Secular One', sans-serif;
 }
 
@@ -136,29 +148,60 @@ body {
   text-decoration: none;
 }
 
-.sort-nav div {
-  margin: 0px 20px 0px 10px;
+.sort-by {
+  font-family: 'Secular One', sans-serif;
+  font-size: 24px;
 }
 
 .sort-list-item {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
   font-size: 18px;
   color: rgb(235, 173, 154);
 }
 
+.sort-item {
+  margin-left: 20px;
+}
+
 .sort-item a {
   font-size: 24px;
-  color: #61916e;
+  color: #68ac7a;
+  transition: color 0.3s;
+}
+
+.sort-item a:hover {
+  color: #3f5e47;
 }
 
 .card-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 50px;
+  column-gap: 20px;
+  margin-bottom: 50px;
+  width: 100%;
+  justify-items: center;
 }
 
 .card-group li {
-  margin: 25px;
   list-style: none;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 300px;
+  transition: transform 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .pages {
@@ -166,12 +209,14 @@ body {
   justify-content: center;
   font-family: 'Secular One', sans-serif;
   font-size: 18px;
+  margin-bottom: 50px;
 }
 
 .pages a {
   text-decoration: none;
   margin: 0px 35px 10px 0px;
   color: rgb(235, 173, 154);
+  transition: color 0.2s;
 }
 
 .pages a:hover {
@@ -179,10 +224,12 @@ body {
 }
 
 .card-body {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .card-body-name {
@@ -202,32 +249,44 @@ body {
   color: red;
 }
 
-table {
+.card-table {
+  margin-top: 20px;
+  width: 100%;
   text-align: center;
   font-family: 'Secular One', sans-serif;
   font-size: 14px;
-}
-
-table th {
-  color: #61916e;
-  padding: 0px 10px 0px 0px;
-}
-
-.card {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.card-table p {
+  padding-top: 5px;
+}
+
+.card-table-box {
+  display: flex;
+  align-items: center;
+}
+
+.card-table-img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+.card-time {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+.card-props {
+  font-size: 16px;
+  color: #68ac7a;
 }
 
 .card-photo img {
   border-radius: 10px;
-  transition: transform 0.4s;
-}
-
-.card-photo img:hover {
-  transform: scale(1.1);
-  box-shadow: 8px 10px 5px 2px #666553;
 }
 
 #greeting {
@@ -244,12 +303,8 @@ table th {
   right: 20px;
   text-decoration: none;
   font-size: 28px;
-  color: #61916e;
+  color: #68ac7a;
 }
-
-/* .card-btn-like:active{
-    color: red;
-  } */
 
 .card-photo {
   position: relative;
