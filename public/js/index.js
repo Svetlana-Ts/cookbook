@@ -6,11 +6,18 @@ likes.forEach((like) => {
 
     const url = like.href;
     const heart = like.querySelector('.js-heart');
+    const newHeart = heart.cloneNode(true);
+    if (newHeart.style.color === 'red') {
+      newHeart.style.color = '#68ac7a';
+    } else {
+      newHeart.style.color = 'red';
+    }
 
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'GET',
     });
 
-    like.innerHTML = await response.text();
+    heart.remove();
+    like.appendChild(newHeart);
   });
 });

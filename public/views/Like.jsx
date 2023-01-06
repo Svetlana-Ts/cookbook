@@ -12,7 +12,10 @@ module.exports = function Like({ card, userId, color }) {
     });
   }
 
-  let heartStyle = isLiked ? { color: 'red' } : { color: '#68ac7a' };
-
-  return <i style={heartStyle} className="fa-solid fa-heart js-heart"></i>;
+  return (
+    <i
+      style={isLiked ? { color: 'red' } : { color: '#68ac7a' }}
+      className="fa-solid fa-heart js-heart"
+    ></i>
+  );
 };
