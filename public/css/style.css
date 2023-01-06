@@ -275,12 +275,12 @@ body {
 .card-table-img {
   width: 20px;
   height: 20px;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .card-time {
-  margin-left: 0;
-  margin-right: 5px;
+  margin-right: 0;
+  margin-left: 5px;
 }
 
 .card-props {

@@ -44,18 +44,18 @@ function Card({ isAuth, card, userId }) {
         <div className="card-table">
           <div className="card-table-box">
             <img
-              className="card-table-img card-time"
-              src="/img/time.png"
-              alt="time"
-            />
-            <p>{`${card.time} minutes`}</p>
-          </div>
-          <div className="card-table-box">
-            <p>{`${card.count} products`}</p>
-            <img
               className="card-table-img"
               src="/img/products.png"
               alt="products"
+            />
+            <p>{`${card.count} products`}</p>
+          </div>
+          <div className="card-table-box">
+            <p>{`${card.time} minutes`}</p>
+            <img
+              className="card-table-img card-time"
+              src="/img/time.png"
+              alt="time"
             />
           </div>
         </div>
