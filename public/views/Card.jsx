@@ -1,18 +1,7 @@
 const React = require('react');
+const Like = require('./Like');
 
 function Card({ isAuth, card, userId }) {
-  let isLiked = false;
-  card.users.forEach((user) => {
-    if (user.id === userId) {
-      isLiked = true;
-    }
-  });
-
-  const like = isLiked ? (
-    <i style={{ color: 'red' }} className="fa-solid fa-heart"></i>
-  ) : (
-    <i className="fa-solid fa-heart"></i>
-  );
   return (
     <li className="card">
       <div className="card-photo">
@@ -27,7 +16,7 @@ function Card({ isAuth, card, userId }) {
         </a>
         {isAuth && (
           <a href={`/favourites/${card.id}`} className="card-btn-like js-like">
-            {like}
+            <Like card={card} userId={userId} />
           </a>
         )}
       </div>

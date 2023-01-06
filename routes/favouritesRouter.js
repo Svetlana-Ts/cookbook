@@ -1,7 +1,10 @@
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
 const favouritesRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
 const Error = require('../public/views/Error');
 const CardList = require('../public/views/CardList');
+const Like = require('../public/views/Like');
 
 favouritesRouter.get('/', async (req, res) => {
   const { baseUrl } = req;
@@ -48,10 +51,15 @@ favouritesRouter.get('/', async (req, res) => {
 });
 
 favouritesRouter.get('/:id', async (req, res) => {
+  const { userId } = req.session;
   try {
-    const card = await CardModel.findByPk(Number(req.params.id));
+    const card = await CardModel.findOne({
+      where: { id: Number(req.params.id) },
+      include: CardModel.Users,
+    });
+
     const user = await User.findOne({
-      where: { id: Number(req.session.userId) },
+      where: { id: Number(userId) },
       include: User.Cards,
     });
 
@@ -72,7 +80,7 @@ favouritesRouter.get('/:id', async (req, res) => {
       user.save();
     }
 
-    res.redirect('/');
+    res.renderComponent(Like, { card, userId });
   } catch (error) {
     res.renderComponent(Error, { error });
   }

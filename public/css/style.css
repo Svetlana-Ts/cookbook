@@ -297,6 +297,10 @@ body {
   font-weight: 600;
 }
 
+.card-photo {
+  position: relative;
+}
+
 .card-btn-like {
   position: absolute;
   display: flex;
@@ -306,11 +310,6 @@ body {
   right: 20px;
   text-decoration: none;
   font-size: 28px;
-  color: #68ac7a;
-}
-
-.card-photo {
-  position: relative;
 }
 
 .signin-form {
