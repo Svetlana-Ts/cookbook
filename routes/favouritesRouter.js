@@ -1,5 +1,3 @@
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
 const favouritesRouter = require('express').Router();
 const { Card: CardModel, User } = require('../db/models');
 const Error = require('../public/views/Error');
@@ -52,6 +50,7 @@ favouritesRouter.get('/', async (req, res) => {
 
 favouritesRouter.get('/:id', async (req, res) => {
   const { userId } = req.session;
+
   try {
     const card = await CardModel.findOne({
       where: { id: Number(req.params.id) },
