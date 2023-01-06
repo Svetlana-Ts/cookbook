@@ -15,19 +15,25 @@ module.exports = function CardList({
 }) {
   return (
     <Main userLogin={userLogin} isAuth={isAuth} baseUrl={baseUrl}>
-      <div id="card-list" className="sort-nav">
+      <div id="card-list" className="sort-nav js-sort">
         <div className="sort-by">Sort by:</div>
 
         <div className="sort-list-item">
           Cooking time
           <div className="sort-item">
             <div>
-              <a href={`${baseUrl}/?offset=${offset}&order=time&sort=ASC`}>
+              <a
+                className="js-sort-btn"
+                href={`${baseUrl}/?offset=${offset}&order=time&sort=ASC`}
+              >
                 <i className="fa-sharp fa-solid fa-caret-up"></i>
               </a>
             </div>
             <div>
-              <a href={`${baseUrl}/?offset=${offset}&order=time&sort=DESC`}>
+              <a
+                className="js-sort-btn"
+                href={`${baseUrl}/?offset=${offset}&order=time&sort=DESC`}
+              >
                 <i className="fa-solid fa-caret-down"></i>
               </a>
             </div>
@@ -38,12 +44,18 @@ module.exports = function CardList({
           Ingredients
           <div className="sort-item">
             <div>
-              <a href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}>
+              <a
+                className="js-sort-btn"
+                href={`${baseUrl}/?offset=${offset}&order=count&sort=ASC`}
+              >
                 <i class="fa-sharp fa-solid fa-caret-up"></i>
               </a>
             </div>
             <div>
-              <a href={`${baseUrl}/?offset=${offset}&order=count&sort=DESC`}>
+              <a
+                className="js-sort-btn"
+                href={`${baseUrl}/?offset=${offset}&order=count&sort=DESC`}
+              >
                 <i class="fa-solid fa-caret-down"></i>
               </a>
             </div>
