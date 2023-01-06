@@ -35,23 +35,30 @@ function Card({ isAuth, card, userId }) {
       <div className="card-body">
         <div className="card-body-name">
           <a href={`/cards/${card.id}`}>
-            {card.title.length > 30
-              ? `${card.title.slice(0, 25)}...`
+            {card.title.length > 24
+              ? `${card.title.slice(0, 24)}...`
               : card.title}
           </a>
         </div>
 
-        <table className="card-table">
-          <tr>
-            <th>Cooking time:</th>
-            <th>Ingredients count:</th>
-          </tr>
-
-          <tr>
-            <td>{`${card.time} minutes`}</td>
-            <td>{`${card.ingredients.split('|').length} products`}</td>
-          </tr>
-        </table>
+        <div className="card-table">
+          <div className="card-table-box">
+            <img
+              className="card-table-img"
+              src="/img/products.png"
+              alt="products"
+            />
+            <p>{`${card.count} products`}</p>
+          </div>
+          <div className="card-table-box">
+            <p>{`${card.time} minutes`}</p>
+            <img
+              className="card-table-img card-time"
+              src="/img/time.png"
+              alt="time"
+            />
+          </div>
+        </div>
       </div>
     </li>
   );

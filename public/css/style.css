@@ -15,7 +15,8 @@ html {
 }
 
 body {
-  background: rgb(52, 56, 61);
+  background: #827668;
+  /* background: rgb(52, 56, 61); */
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -36,6 +37,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dropdown {
@@ -64,6 +71,7 @@ body {
   opacity: 0.7;
   text-decoration: none;
   font-size: 24px;
+  transition: opacity 0.3s;
 }
 
 .dropdown-menu a:hover {
@@ -86,6 +94,12 @@ body {
   color: red;
   border-radius: 7px;
   border: none;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+}
+
+.dropdown button:hover {
+  background-color: #ffccff;
 }
 
 .header-title {
@@ -128,7 +142,8 @@ body {
   padding: 50px;
   margin: 0px 10px 0px 10px;
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   font-family: 'Secular One', sans-serif;
 }
 
@@ -136,29 +151,60 @@ body {
   text-decoration: none;
 }
 
-.sort-nav div {
-  margin: 0px 20px 0px 10px;
+.sort-by {
+  font-family: 'Secular One', sans-serif;
+  font-size: 24px;
 }
 
 .sort-list-item {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
   font-size: 18px;
   color: rgb(235, 173, 154);
 }
 
+.sort-item {
+  margin-left: 20px;
+}
+
 .sort-item a {
   font-size: 24px;
-  color: #61916e;
+  color: #68ac7a;
+  transition: color 0.3s;
+}
+
+.sort-item a:hover {
+  color: #3f5e47;
 }
 
 .card-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 50px;
+  column-gap: 20px;
+  margin-bottom: 50px;
+  width: 100%;
+  justify-items: center;
 }
 
 .card-group li {
-  margin: 25px;
   list-style: none;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 300px;
+  transition: transform 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .pages {
@@ -166,12 +212,14 @@ body {
   justify-content: center;
   font-family: 'Secular One', sans-serif;
   font-size: 18px;
+  margin-bottom: 50px;
 }
 
 .pages a {
   text-decoration: none;
   margin: 0px 35px 10px 0px;
   color: rgb(235, 173, 154);
+  transition: color 0.2s;
 }
 
 .pages a:hover {
@@ -179,10 +227,12 @@ body {
 }
 
 .card-body {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .card-body-name {
@@ -202,32 +252,44 @@ body {
   color: red;
 }
 
-table {
+.card-table {
+  margin-top: 20px;
+  width: 100%;
   text-align: center;
   font-family: 'Secular One', sans-serif;
   font-size: 14px;
-}
-
-table th {
-  color: #61916e;
-  padding: 0px 10px 0px 0px;
-}
-
-.card {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.card-table p {
+  padding-top: 5px;
+}
+
+.card-table-box {
+  display: flex;
+  align-items: center;
+}
+
+.card-table-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.card-time {
+  margin-right: 0;
+  margin-left: 5px;
+}
+
+.card-props {
+  font-size: 16px;
+  color: #68ac7a;
 }
 
 .card-photo img {
   border-radius: 10px;
-  transition: transform 0.4s;
-}
-
-.card-photo img:hover {
-  transform: scale(1.1);
-  box-shadow: 8px 10px 5px 2px #666553;
 }
 
 #greeting {
@@ -244,12 +306,8 @@ table th {
   right: 20px;
   text-decoration: none;
   font-size: 28px;
-  color: #61916e;
+  color: #68ac7a;
 }
-
-/* .card-btn-like:active{
-    color: red;
-  } */
 
 .card-photo {
   position: relative;
@@ -446,15 +504,17 @@ table th {
 
 .recipe-container {
   display: block;
-  width: 53%;
-  margin-left: 300px;
-  margin-top: 0px;
+  width: 50%;
 }
 
 .recipe {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .recipe-info {
@@ -482,7 +542,7 @@ table th {
 .recipe-name {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 30px;
   color: #fff;
   padding-bottom: 10px;
 }
@@ -494,7 +554,8 @@ table th {
 
 .recipe-list h2,
 .recipe-text h2 {
-  color: #61916e;
+  color: rgb(235, 173, 154);
+  margin-top: 20px;
 }
 
 .recipe-ing-list li {
@@ -502,6 +563,41 @@ table th {
 }
 
 .logo-return {
-  margin: 0;
-  padding: 10px 0px 0px 10px;
+  margin: 30px;
+}
+
+.header-mini {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #372f25;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+.header-mini-box {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-link {
+  padding: 8px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.3s;
+}
+
+.logout-link:hover {
+  background-color: #ffccff;
+}
+
+.enter {
+  background: rgb(52, 56, 61);
+  height: 100vh;
 }
