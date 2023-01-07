@@ -18,10 +18,15 @@ favouritesRouter.get('/', async (req, res) => {
       const user = await User.findByPk(Number(userId));
       const userLogin = user.login;
 
-      const allCards = await CardModel.findAll({
-        include: CardModel.Users,
-        order: [[colName, sortBy]],
-      });
+      let allCards;
+      try {
+        allCards = await CardModel.findAll({
+          include: CardModel.Users,
+          order: [[colName, sortBy]],
+        });
+      } catch (error) {
+        res.renderComponent(Error, { error });
+      }
 
       const cards = [];
       allCards.forEach((card) =>

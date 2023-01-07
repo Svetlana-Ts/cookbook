@@ -64,11 +64,13 @@ module.exports = function CardList({
           </div>
         </div>
 
-        <ul className="card-group">
+        <span className="js-separator"></span>
+        <ul className="card-group js-card-group">
           {cards.map((card) => (
             <Card key={card.id} isAuth={isAuth} card={card} userId={userId} />
           ))}
         </ul>
+        <span className="js-separator"></span>
 
         {baseUrl === '/cards' ? (
           <div className="pages">
