@@ -2,7 +2,6 @@ const React = require('react');
 
 module.exports = function Like({ card, userId }) {
   let isLiked = false;
-  console.log(card.users);
   if (card.users) {
     card.users.forEach((user) => {
       if (user.id === userId) {
