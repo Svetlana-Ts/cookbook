@@ -1,21 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
-const Main = require('./Main');
+const Like = require('./Like');
 const Menu = require('./Menu');
 
 function Recipe({ isAuth, card, userId, userLogin }) {
-  let isLiked = false;
-  card.users.forEach((user) => {
-    if (user.id === userId) {
-      isLiked = true;
-    }
-  });
-
-  const like = isLiked ? (
-    <i style={{ color: 'red' }} className="fa-solid fa-heart"></i>
-  ) : (
-    <i className="fa-solid fa-heart"></i>
-  );
   return (
     <Layout>
       <div className="main">
@@ -47,14 +35,14 @@ function Recipe({ isAuth, card, userId, userLogin }) {
             <div className="recipe-name">{card.title}</div>
 
             <div className="recipe-info">
-              <div className="recipe-photo">
+              <div className="recipe-photo js-recipe-img">
                 <img height="400px" width="400px" src={card.photo} alt="" />
                 {isAuth && (
                   <a
                     href={`/favourites/${card.id}`}
-                    className="recipe-btn-like"
+                    className="recipe-btn-like js-like"
                   >
-                    {like}
+                    <Like card={card} userId={userId} />
                   </a>
                 )}
               </div>

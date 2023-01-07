@@ -10,7 +10,7 @@ function Card({ isAuth, card, userId }) {
             width="250px"
             height="250px"
             src={card.photo}
-            className="card-photo-img"
+            className="card-photo-img js-card-img"
             alt=""
           />
         </a>
@@ -23,7 +23,7 @@ function Card({ isAuth, card, userId }) {
 
       <div className="card-body">
         <div className="card-body-name">
-          <a href={`/cards/${card.id}`}>
+          <a className="js-card-title" href={`/cards/${card.id}`}>
             {card.title.length > 24
               ? `${card.title.slice(0, 24)}...`
               : card.title}

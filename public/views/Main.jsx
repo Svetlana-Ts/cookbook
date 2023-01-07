@@ -11,8 +11,13 @@ module.exports = function Main({ isAuth, userLogin = '', baseUrl, children }) {
           <div className="container">
             <div className="header-line">
               <div className="header-logo">
-                <a href="/">
-                  <img width="200px" height="100px" src="/img/logo.png" />
+                <a className="js-logo" href="/">
+                  <img
+                    className="js-logo-img"
+                    width="200px"
+                    height="100px"
+                    src="/img/logo.png"
+                  />
                 </a>
               </div>
 
@@ -52,7 +57,7 @@ module.exports = function Main({ isAuth, userLogin = '', baseUrl, children }) {
                 width="100px"
                 height="50px"
                 src="/img/logo.png"
-                className="logo-return"
+                className="logo-return js-logo-img"
               />
             </a>
 
