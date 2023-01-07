@@ -59,6 +59,7 @@ cards.forEach((card) => {
     //-----LIKES-----
     const heart = card.querySelector('.js-heart');
     if (event.target === heart) {
+      const logout = document.querySelector('.js-logout');
       const newHeart = heart.cloneNode(true);
       const like = heart.closest('.js-like');
       const url = like.href;
@@ -75,9 +76,13 @@ cards.forEach((card) => {
 
       heart.remove();
       like.appendChild(newHeart);
+      if (logout) {
+        card.remove();
+      }
     }
     //-----LIKES-----
 
+    //-----CARD-----
     const title = card.querySelector('.js-card-title');
     const cardImg = card.querySelector('.js-card-img');
     if (event.target === title || event.target === cardImg) {
@@ -110,5 +115,6 @@ cards.forEach((card) => {
         }
       });
     }
+    //-----CARD-----
   });
 });

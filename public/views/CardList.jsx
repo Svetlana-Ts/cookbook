@@ -16,7 +16,7 @@ module.exports = function CardList({
   return (
     <Main userLogin={userLogin} isAuth={isAuth} baseUrl={baseUrl}>
       <div className="card-container">
-        <div id="card-list js-card-list" className="sort-nav js-sort">
+        <div id="card-list" className="sort-nav js-sort">
           <div className="sort-by">Sort by:</div>
 
           <div className="sort-list-item">

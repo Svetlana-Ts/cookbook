@@ -61,7 +61,7 @@ module.exports = function Main({ isAuth, userLogin = '', baseUrl, children }) {
               />
             </a>
 
-            <a className="logout-link" href="/auth/logout">
+            <a className="logout-link js-logout" href="/auth/logout">
               Log out
             </a>
           </div>
