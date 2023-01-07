@@ -1,33 +1,10 @@
-//-----ОТРИСОВКА ЛАЙКОВ-----
-// const likes = Array.from(document.querySelectorAll('.js-like'));
-
-// likes.forEach((like) => {
-//   like.addEventListener('click', async (event) => {
-//     event.preventDefault();
-
-//     const url = like.href;
-//     const heart = like.querySelector('.js-heart');
-//     const newHeart = heart.cloneNode(true);
-
-//     if (newHeart.style.color === 'red') {
-//       newHeart.style.color = '#68ac7a';
-//     } else {
-//       newHeart.style.color = 'red';
-//     }
-
-//     await fetch(url, {
-//       method: 'GET',
-//     });
-
-//     heart.remove();
-//     like.appendChild(newHeart);
-//   });
-// });
-//--------------------------------
+const main = document.querySelector('.main');
+const container = document.querySelector('.card-container');
 
 document.body.addEventListener('click', (event) => {
   event.preventDefault();
 
+  //-----SORT-----
   const carets = document.querySelectorAll('.fa-solid');
   carets.forEach(async (caret) => {
     if (event.target === caret) {
@@ -37,7 +14,9 @@ document.body.addEventListener('click', (event) => {
       document.body.innerHTML = await response.text();
     }
   });
+  //--------------
 
+  //-----LIKES-----
   const hearts = document.querySelectorAll('.js-heart');
   hearts.forEach(async (heart) => {
     if (event.target === heart) {
@@ -59,4 +38,5 @@ document.body.addEventListener('click', (event) => {
       like.appendChild(newHeart);
     }
   });
+  //---------------
 });
