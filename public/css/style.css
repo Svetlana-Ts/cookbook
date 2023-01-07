@@ -178,6 +178,12 @@ body {
   color: #3f5e47;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .card-group {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -297,6 +303,10 @@ body {
   font-weight: 600;
 }
 
+.card-photo {
+  position: relative;
+}
+
 .card-btn-like {
   position: absolute;
   display: flex;
@@ -306,11 +316,6 @@ body {
   right: 20px;
   text-decoration: none;
   font-size: 28px;
-  color: #68ac7a;
-}
-
-.card-photo {
-  position: relative;
 }
 
 .signin-form {

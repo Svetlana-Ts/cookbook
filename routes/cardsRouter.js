@@ -19,14 +19,27 @@ cardsRouter.get('/', async (req, res) => {
     let offset = Number(req.query.offset) || 0;
     const limit = 8;
 
-    const cards = await CardModel.findAll({
-      include: CardModel.Users,
-      order: [[colName, sortBy]],
-      offset,
-      limit,
-    });
+    let cards;
+    try {
+      cards = await CardModel.findAll({
+        include: CardModel.Users,
+        order: [[colName, sortBy]],
+        offset,
+        limit,
+      });
+    } catch (error) {
+      res.status(500);
+      res.renderComponent(Error, { error });
+    }
 
-    const allCards = await CardModel.findAll();
+    let allCards;
+    try {
+      allCards = await CardModel.findAll();
+    } catch (error) {
+      res.status(500);
+      res.renderComponent(Error, { error });
+    }
+
     const maxCount = allCards.length;
 
     let isAuth = false;
@@ -46,7 +59,6 @@ cardsRouter.get('/', async (req, res) => {
       maxCount,
     });
   } catch (error) {
-    console.error(error);
     res.status(500);
     res.renderComponent(Error, { error });
   }
@@ -67,10 +79,18 @@ cardsRouter.get('/:id', async (req, res) => {
     }
 
     const cardId = req.params.id;
-    const card = await CardModel.findOne({
-      where: { id: cardId },
-      include: CardModel.Users,
-    });
+
+    let card;
+    try {
+      card = await CardModel.findOne({
+        where: { id: cardId },
+        include: CardModel.Users,
+      });
+    } catch (error) {
+      res.status(500);
+      res.renderComponent(Error, { error });
+    }
+
     res.renderComponent(Recipe, {
       isAuth,
       card,
@@ -81,7 +101,6 @@ cardsRouter.get('/:id', async (req, res) => {
     res.status(500);
     res.renderComponent(Error, { error });
   }
-  res.end();
 });
 
 module.exports = cardsRouter;
