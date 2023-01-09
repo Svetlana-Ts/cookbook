@@ -1,6 +1,7 @@
 const fetchLikes = async (event, parent) => {
   const heart = parent.querySelector('.js-heart');
   if (event.target === heart) {
+    const oneCard = heart.closest('.card');
     const logout = document.querySelector('.js-logout');
     const newHeart = heart.cloneNode(true);
     const like = heart.closest('.js-like');
@@ -19,7 +20,7 @@ const fetchLikes = async (event, parent) => {
     heart.remove();
     like.appendChild(newHeart);
     if (logout) {
-      parent.remove();
+      oneCard.remove();
     }
   }
 };
@@ -41,15 +42,22 @@ const fetchCard = async (event, parent) => {
   }
 };
 
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card-photo');
 
 cards.forEach((card) => {
   card.addEventListener('click', async (event) => {
     event.preventDefault();
 
     await fetchLikes(event, card);
-    await fetchCard(event, card);
+    // await fetchCard(event, card);
   });
+});
+
+const recipeImg = document.querySelector('.js-recipe-img');
+recipeImg.addEventListener('click', async (event) => {
+  event.preventDefault();
+
+  await fetchLikes(event, recipeImg);
 });
 
 // const sortBox = document.querySelector('.js-sort');
@@ -79,5 +87,33 @@ cards.forEach((card) => {
 //         await fetchCard(event, card);
 //       });
 //     });
+//   });
+// });
+
+// const hearts = document.querySelectorAll('.js-heart');
+
+// hearts.forEach((heart) => {
+//   heart.addEventListener('click', async (event) => {
+//     event.preventDefault();
+
+//     const oneCard = heart.closest('.card');
+//     const like = heart.closest('.js-like');
+//     const logout = document.querySelector('.js-logout');
+//     const newHeart = heart.cloneNode(true);
+//     const url = like.href;
+
+//     if (newHeart.style.color === 'red') {
+//       newHeart.style.color = '#68ac7a';
+//     } else {
+//       newHeart.style.color = 'red';
+//     }
+
+//     await fetch(url);
+
+//     heart.remove();
+//     like.appendChild(newHeart);
+//     if (logout) {
+//       oneCard.remove();
+//     }
 //   });
 // });

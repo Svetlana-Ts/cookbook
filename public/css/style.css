@@ -294,7 +294,7 @@ body {
   color: #68ac7a;
 }
 
-.card-photo img {
+.card-photo-img {
   border-radius: 10px;
 }
 
@@ -305,6 +305,10 @@ body {
 
 .card-photo {
   position: relative;
+}
+
+.card-photo-link {
+  cursor: default;
 }
 
 .card-btn-like {

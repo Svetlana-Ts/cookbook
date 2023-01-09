@@ -9,60 +9,61 @@ cardsRouter.get('/', async (req, res) => {
   const colName = req.query.order !== undefined ? req.query.order : 'id';
   const sortBy = req.query.sort !== undefined ? req.query.sort : 'ASC';
 
+  let user;
   try {
-    const user = await User.findByPk(req.session.userId);
-    let userLogin = '';
-    if (user) {
-      userLogin = user.login;
-    }
+    user = await User.findByPk(req.session.userId);
+  } catch (error) {
+    res.status(500);
+    res.renderComponent(Error, { error });
+  }
 
-    let offset = Number(req.query.offset) || 0;
-    const limit = 8;
+  let userLogin = '';
+  if (user) {
+    userLogin = user.login;
+  }
 
-    let cards;
-    try {
-      cards = await CardModel.findAll({
-        include: CardModel.Users,
-        order: [[colName, sortBy]],
-        offset,
-        limit,
-      });
-    } catch (error) {
-      res.status(500);
-      res.renderComponent(Error, { error });
-    }
+  let offset = Number(req.query.offset) || 0;
+  const limit = 8;
 
-    let allCards;
-    try {
-      allCards = await CardModel.findAll();
-    } catch (error) {
-      res.status(500);
-      res.renderComponent(Error, { error });
-    }
-
-    const maxCount = allCards.length;
-
-    let isAuth = false;
-    if (req.session.userId) {
-      isAuth = true;
-    }
-
-    res.renderComponent(CardList, {
-      isAuth,
-      cards,
-      userLogin,
-      baseUrl,
+  let cards;
+  try {
+    cards = await CardModel.findAll({
+      include: CardModel.Users,
+      order: [[colName, sortBy]],
       offset,
-      userId: req.session.userId,
-      colName,
-      sortBy,
-      maxCount,
+      limit,
     });
   } catch (error) {
     res.status(500);
     res.renderComponent(Error, { error });
   }
-  res.end();
+
+  let allCards;
+  try {
+    allCards = await CardModel.findAll();
+  } catch (error) {
+    res.status(500);
+    res.renderComponent(Error, { error });
+  }
+
+  const maxCount = allCards.length;
+
+  let isAuth = false;
+  if (req.session.userId) {
+    isAuth = true;
+  }
+
+  res.renderComponent(CardList, {
+    isAuth,
+    cards,
+    userLogin,
+    baseUrl,
+    offset,
+    userId: req.session.userId,
+    colName,
+    sortBy,
+    maxCount,
+  });
 });
 
 cardsRouter.get('/:id', async (req, res) => {
