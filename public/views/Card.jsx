@@ -5,7 +5,7 @@ function Card({ isAuth, card, userId }) {
   return (
     <li className="card">
       <div className="card-photo">
-        <a href={`/cards/${card.id}`}>
+        <a className="card-photo-link" href={`/cards/${card.id}`}>
           <img
             width="250px"
             height="250px"

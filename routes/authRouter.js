@@ -93,14 +93,9 @@ authRouter.get('/logout', (req, res) => {
   const { userId } = req.session;
 
   if (userId) {
-    try {
-      req.session.destroy();
-      res.clearCookie('user_sid');
-      res.redirect('/');
-    } catch (error) {
-      res.status(500).json('Ошибка при выходе');
-      return;
-    }
+    req.session.destroy();
+    res.clearCookie('user_sid');
+    res.redirect('/');
   }
   res.redirect('/');
 });
