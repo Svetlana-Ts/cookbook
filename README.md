@@ -1,4 +1,4 @@
-https://cookbook-z8ax.onrender.com
+https://cookbook-2luc.onrender.com
 
 # Кулинарная книга
 
